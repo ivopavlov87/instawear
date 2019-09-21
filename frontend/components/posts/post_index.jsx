@@ -51,7 +51,6 @@ class PostIndex extends React.Component {
     render() {
         return (
             <div>
-                <div>feeeeeeeed</div>
                 <NavBarContainer />
             </div>    
         );

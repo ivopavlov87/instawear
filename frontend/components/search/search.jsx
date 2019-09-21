@@ -25,20 +25,16 @@ class Search extends React.Component {
     render() {
         return (
             <div className="search-container">
-                <form action="">
-                    <div className="search-box">
-                        <input
-                            id="search-input"
-                            type="search"
-                            className="search--container-input"
-                            placeholder="Search artists"
-                            onChange={this.update}
-                        />
-                        <div className="search-icon">
-                            <i></i>
-                        </div>
-                    </div>
-                </form>
+                <input
+                    id="search-input"
+                    type="search"
+                    className="search--container-input"
+                    placeholder="Search"
+                    onChange={this.update}
+                />
+                <div className="search-icon">
+                    <i></i>
+                </div>
             </div>
         )
     }

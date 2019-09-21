@@ -97,7 +97,7 @@ class PostForm extends React.Component {
     renderPostForm() {
         return (
             <label className="fancy-plus-button">
-                <i></i>
+                <img src="/images/add-button.png" alt="create a post"/>
                 <input type="file"
                     accept="image/*"
                     onChange={this.handleFile} 
@@ -114,18 +114,12 @@ class PostForm extends React.Component {
     render() {
         if (this.props.currentUser) {
             return (
-                <div>
+                <div className="add-post-btn">
                     {this.renderPostForm()}
                     {this.popUp()}
                 </div>
             );      
-        } else {
-            return (
-                <label className="fancy-plus-button" onClick={this.renderSignupForm}>
-                    <i className="fancy-plus-button-icon"></i>
-                </label>
-            );
-        }
+        } 
     }
 }
 

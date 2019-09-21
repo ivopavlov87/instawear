@@ -1,0 +1,65 @@
+.vertical-devider {
+    background-color: #262626;
+    height: 28px;
+    margin: 0 16px;
+    width: 1px;
+}
+
+.navbar-container {
+    background: white;
+    border-bottom: 1px solid #ebebeb;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    // position: sticky;
+    top: 0px;
+    height: 80px;
+    z-index: 2;
+    min-width: 800px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 85%;
+}
+
+.nav-links img {
+    width: 24px;
+    height: 24px;
+    margin-left: 30px; 
+}
+
+.nav-links img:hover {
+    cursor: pointer;
+}
+
+.navbar-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-left a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+}
+
+.navbar-logo {
+    font-family: Billabong;
+    color: black;
+    font-size: 40px;
+    margin-top: 5px;
+}
+
+// .add-post-btn {
+
+// }
