@@ -31,7 +31,8 @@ class PostForm extends React.Component {
 
     closeForm() {
         this.setState({
-            description: '',
+            caption: '',
+            location: '',
             photo: null,
             preview: null
         });
@@ -41,12 +42,14 @@ class PostForm extends React.Component {
         e.preventDefault();
 
         const formData = new FormData();
-        formData.append('post[description]', this.state.description);
+        formData.append('post[caption]', this.state.caption);
+        formData.append('post[location]', this.state.location);        
         formData.append('post[photo]', this.state.photo);
         this.props.action(formData)
             .then(() => {
                 this.setState({
-                    description: '',
+                    caption: '',
+                    location: '',
                     photo: null,
                     preview: null
                 });
@@ -71,11 +74,18 @@ class PostForm extends React.Component {
                             <img src={this.state.preview} />
                         </div>
 
-                        <div className="form-text">
+                        <div className="form-caption">
                             <textarea type="text"
-                                value={this.state.description}
+                                value={this.state.caption}
                                 placeholder="Say Something..."
-                                onChange={this.update("description")}
+                                onChange={this.update("caption")}
+                            />
+                        </div>
+                        <div className="form-location">
+                            <input type="text"
+                                value={this.state.location}
+                                placeholder="Location..."
+                                onChange={this.update("location")}
                             />
                         </div>
                     </div>

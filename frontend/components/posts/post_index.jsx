@@ -52,6 +52,9 @@ class PostIndex extends React.Component {
         return (
             <div>
                 <NavBarContainer />
+                <section className="feed-posts-section">
+                    {this.renderPosts()}
+                </section>
             </div>    
         );
     }

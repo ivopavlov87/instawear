@@ -101,14 +101,6 @@ class ProfileHeader extends React.Component {
     render() {
         return (
             <div>
-                <section className="grid-content profile-cover-section">
-                    <div className="single-cover-image" 
-                        style={{backgroundImage: `url(${this.props.user.coverPhoto})`}}>
-
-                        {this.updateCover()}
-                    </div>
-                </section>
-
                 <section className="profile-header-section">
                     <div className="grid-content user-info-top">
                         <form className="user-description">
@@ -124,7 +116,7 @@ class ProfileHeader extends React.Component {
                                             </span>
                                         </h1>
                                         <div className="follow">
-                                            <FollowBarContainer user={this.props.user}/>
+                                            {/* <FollowBarContainer user={this.props.user}/> */}
                                         </div>
                                     </div>
                                 </div>

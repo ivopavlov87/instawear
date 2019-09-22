@@ -44,27 +44,30 @@ class ProfilePostItem extends React.Component {
         // overlay.classList.add("hide");
     }
 
+//     <div className="post-likes hide">
+//     <Link onClick={this.stopMouseOver} to={`/profile/${this.props.user.id}`}>
+//         <h3>{this.props.user.username}</h3>
+//     </Link>
+//     {/* <div id="post-overlay" className="post-item-overlay"></div> */}
+//     {/* <img src="/images/like-white.png"/> */}
+//     {/* <img src="/images/like-pink.png"/> */}
+//     <div className="icons">
+//         <LikeBar postId={this.props.post.id} />
+//         <img src="/images/comment-white.png" />
+//     </div>
+// </div>
+
     render() {
         if(this.props.post === undefined) {
         }
         return (
-            <div className="profile-post-item" onClick={this.handleOnClick} onMouseEnter={this.handleOnMouseEnter} onMouseLeave={this.handleOnMouseLeave}>
+            // <div className="profile-post-item" onClick={this.handleOnClick} onMouseEnter={this.handleOnMouseEnter} onMouseLeave={this.handleOnMouseLeave}>
+                <div>
                 <div className="img-wrapper">
                     <img src={this.props.post.photoUrl} />
                 </div>
 
-                <div className="post-likes hide">
-                    <Link onClick={this.stopMouseOver} to={`/profile/${this.props.user.id}`}>
-                        <h3>{this.props.user.username}</h3>
-                    </Link> 
-                    {/* <div id="post-overlay" className="post-item-overlay"></div> */}
-                    {/* <img src="/images/like-white.png"/> */}
-                    {/* <img src="/images/like-pink.png"/> */}
-                    <div className="icons">
-                        <LikeBar postId={this.props.post.id} />
-                        <img src="/images/comment-white.png" />
-                    </div>
-                </div>
+                
             </div>
             
         );

@@ -5,7 +5,8 @@ import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = ({ session, entities: { users } }) => ({
     post: {
-        description: '',
+        caption: '',
+        location: '',
         photo: null,
         preview: null
     },

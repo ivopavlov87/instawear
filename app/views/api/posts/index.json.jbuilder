@@ -1,9 +1,20 @@
 json.posts do 
     @posts.each do |post|
         json.set! post.id do
-            json.partial!('/api/posts/post', post: post)
+            json.partial!('post', post: post)
         end 
     end 
+end 
+
+
+@users = []
+@likes = []
+@comments = []
+
+@posts.each do |post|
+    @users << post.user 
+    @comments  += post.comments
+    @likes += post.likes
 end 
 
 json.users do 
@@ -21,3 +32,11 @@ json.likes do
         end
     end 
 end
+
+json.comments do 
+    @comments.each do |comment|
+        json.set! comment.id do
+            json.partial!('/api/comments/comment',comment: comment)
+        end 
+    end 
+end 
