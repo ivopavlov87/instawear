@@ -103,7 +103,8 @@ class PostShow extends React.Component {
                             <p className="post-create-date"> </p>
                         </div>
 
-                        <div className="post-description">{post.description}</div>
+                        <div className="post-caption">{post.caption}</div>
+                        <div className="post-location">{post.location}</div>
 
                         <CommentIndexContainer post={post} />
                         <CreateCommentFormContainer postId={this.props.post.id} currentUserId={this.props.currentUserId} />
