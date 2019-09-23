@@ -1,3 +1,96 @@
 // Place all the styles related to the api/posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post-item-container {
+    background: white;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    margin-top: 60px;
+    overflow: hidden;
+}
+
+.posts {
+    max-width: 935px;
+    display: flex;
+    flex-direction: column-reverse;
+    margin: auto;
+    width: 600px;
+}
+
+.post-item-header {
+    padding: 16px;
+    width: 568px;
+    height: 28px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.post-item-header img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    // padding: 0 10px;
+    margin-right: 10px;
+}
+
+.post-item-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.post-item-info div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.post-img img {
+    max-height: 100%;
+    object-fit: cover;
+    width: 600px;
+}
+
+.post-img {
+    border: 0 solid #000;
+    position: relative;
+    height: 600px;
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.post-item-footer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.post-item-username {
+    font-weight: 600;
+}
+
+.post-item-location {
+    font-size: 12px;
+}
+
+.post-item-footer strong {
+    font-weight: 600;
+}
+
+.caption-more {
+    color: #999;
+}
+
+.post-caption p {
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-bottom: 10px;
+}

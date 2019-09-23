@@ -31,21 +31,15 @@ class CommentIndexItem extends React.Component {
             return (
                 <div className="comment-index-item">
                     <div className ="comment-item-line">
-                        <Link to={`/profile/${this.props.user.id}`}>
-                            <img src={this.props.user.profilePhoto} />
+                        <Link to={`/user/${this.props.user.id}`}>
+                            <p><strong id='commenter-username'>
+                                {this.props.user.username}
+                            </strong></p>
                         </Link>
 
-                        <p><strong id='commenter-username'>
-                            {this.props.user.username}
-                        </strong></p>
-                        <div className="dot-separator"></div>
-                        {/* date created */}
-                        {this.renderDelete()}
-                    </div>
-                    <div>
                         <p>{this.props.comment.body}</p>
+                        {this.renderDelete()}  
                     </div>
-
                 </div>
             );
         }

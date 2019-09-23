@@ -15,7 +15,7 @@ class NavBar extends React.Component {
     }
 
     handleProfile(){
-        this.props.history.push(`/profile/${this.props.currentUser.id}`);
+        this.props.history.push(`/user/${this.props.currentUser.id}`);
     }
 
     render() {
@@ -35,9 +35,7 @@ class NavBar extends React.Component {
                     <div className="navbar-right">
                         <CreatePostFormContainer />
                         <div className="profile-btn">
-                            {/* <Link to={`/profile/${this.props.currentUser.id}`}> */}
-                                <img onClick={this.handleProfile} src="/images/user.png" alt={this.props.currentUser.username} />
-                            {/* </Link> */}
+                            <img onClick={this.handleProfile} src="/images/user.png" alt={this.props.currentUser.username} />
                         </div>
 
                         <div className="logout-btn" onClick={this.handleLogout}>
