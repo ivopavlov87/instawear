@@ -1,11 +1,14 @@
 class Api::PostsController < ApplicationController
   def index
-    @posts = Post.all.with_attached_photo || []
+    @posts = Post.all
+            .includes(:user, :likes, :comments, :likers)
+            .with_attached_photo
     render :index
   end
   
   def show
-    @post = Post.find(params[:id])
+    @post = Post.with_attached_photo
+            .includes(:comments, :likes, :user, :likers).where(id: params[:id])[0]
     render :show
   end
   

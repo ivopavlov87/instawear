@@ -8,17 +8,27 @@ class CommentIndex extends React.Component {
     }
 
     render() {
-        const { comments, deleteComment } = this.props;
+        let viewAllComments, slicedComments;
+        let { history, post, match, comments, deleteComment } = this.props;
+
+        if (comments.length > 2 && match.path === "/feed") {
+            slicedComments = comments.slice(comments.length - 2);
+            viewAllComments = (
+                <p className="view-all-comments" onClick={() =>
+                    history.push(`/posts/${post.id}`)}>
+                    View all {comments.length} comments
+                </p>
+            );
+        } else {
+            slicedComments = comments;
+        }
+
         return (
             <div className="comments-container">
-                <div className="comments-info">
-                    <p>Comments</p>
-                    <div className="dot-separator"></div>
-                    <span>{comments.length}</span>
-                </div>
+                {viewAllComments}
                 <div className="comments-wrap">
                     {
-                        comments.map((comment, idx) =>
+                        slicedComments.map((comment, idx) =>
                             <CommentIndexItemContainer
                                 key={idx}
                                 comment={comment}

@@ -6,6 +6,7 @@ class LikeBar extends React.Component {
 
         this.like = this.like.bind(this);
         this.unlike = this.unlike.bind(this);
+        this.pushToPostShow = this.pushToPostShow.bind(this);
     }
 
     unlike(e) {
@@ -21,21 +22,38 @@ class LikeBar extends React.Component {
         this.props.createLike({ post_id: postId});
     }
 
+    pushToPostShow() {
+        if (this.props.history.location.pathname === '/feed') {
+            this.props.history.push(`/posts/${this.props.postId}`);
+        } else {
+            document.getElementsByTagName('textarea')[0].focus();
+        }
+    }
+
     render() {
+        let likes_num = "";
+        if (this.props.likes.length === 1) {
+            likes_num = "1 like"
+        } else if (this.props.likes.length > 0) {
+            likes_num = this.props.likes.length + " " + "likes"
+        }
+
         if (this.props.likedByCurrentUser) {
             return (
                 <div className="like-icon">
-                    <img src="/images/like-pink.png"
+                    <img src="/images/red-like.png"
                         onClick={this.unlike}/>
-                    <p className="num-likes">{this.props.likes.length}</p>
+                    <img src="/images/comment.png" alt="leave a comment" onClick={this.pushToPostShow} />
+                    <p className="num-likes">{likes_num}</p>
                 </div>
             );
         } else {
             return (
                 <div className="like-icon">
-                    <img src="/images/like-white-pink.png"
+                    <img src="/images/white-like.png"
                         onClick={this.like} />
-                    <p className="num-likes">{this.props.likes.length}</p>
+                    <img src="/images/comment.png" alt="leave a comment" onClick={this.pushToPostShow} />
+                    <p className="num-likes">{likes_num}</p>
                 </div>
             );
         }

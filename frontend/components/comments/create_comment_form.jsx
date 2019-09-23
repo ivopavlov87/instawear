@@ -24,22 +24,36 @@ class CreateCommentForm extends React.Component {
     }
 
     render() {
+        let createCommentButton;
+
+        if (this.state.body === "") {
+            createCommentButton = (
+                <p className="blur-opacity" id="create-comment" onClick={this.handleSubmit}>
+                    Post
+                </p>
+            )
+        } else {
+            createCommentButton = (
+                <p className="change-opacity" id="create-comment" onClick={this.handleSubmit}>
+                    Post
+                </p>
+            );
+        }
+
         return (
             <div className="comment-form">
-                <Link to={`/profile/${this.props.currentUser.id}`}>
+                <Link to={`/user/${this.props.currentUser.id}`}>
                     <img src={this.props.currentUser.profilePhoto} />
                 </Link>
 
                 <div className="comment-form-line">
                     <textarea 
-                        placeholder="Leave a comment here"
+                        placeholder="Add a comment..."
                         onChange={this.update("body")}
                         value={this.state.body}>
                     </textarea>
 
-                    <p onClick={this.handleSubmit}>
-                        Comment
-                    </p>
+                    {createCommentButton}
                 </div>
             </div>
         );

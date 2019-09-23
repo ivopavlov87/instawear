@@ -12,7 +12,7 @@ class ProfileTabs extends React.Component {
             <div className="profile-tabs">
                 <ul>
                     <li>
-                        <Link to={`/profile/${user.id}`}>
+                        <Link to={`/user/${user.id}`}>
                             <span>{user.postIds.length}</span>
                             <br />
                             POSTS

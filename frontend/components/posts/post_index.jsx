@@ -43,11 +43,7 @@ class PostIndex extends React.Component {
             );
         }
     }
-
-    // <section className="feed-posts-section">
-            //     {this.renderPosts()}
-            // </section>
-
+    
     render() {
         return (
             <div>

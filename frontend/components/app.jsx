@@ -28,7 +28,7 @@ const App = () => (
         {/* <AuthRoute path='/' component={Splash} /> */}
         
         <Switch>
-            <ProtectedRoute path='/profile/:id' component={ProfileContainer} />
+            <ProtectedRoute path='/user/:id' component={ProfileContainer} />
             <ProtectedRoute path='/posts/:id' component={PostShowContainer} />
             <ProtectedRoute path='/feed' component={PostIndexContainer} />
         </Switch>

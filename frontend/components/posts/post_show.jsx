@@ -68,10 +68,10 @@ class PostShow extends React.Component {
                     <div className="post-show-content">
                         <header>
                             <div className="post-show-header">
-                                <Link to={`/profile/${user.id}`}>
+                                <Link to={`/user/${user.id}`}>
                                     <img src={user.profilePhoto} alt={user.username} />
                                 </Link>
-                                <Link to={`/profile/${user.id}`}>
+                                <Link to={`/user/${user.id}`}>
                                     <p>{user.username}</p>
                                 </Link>
                                 <div className="post-dropdown">

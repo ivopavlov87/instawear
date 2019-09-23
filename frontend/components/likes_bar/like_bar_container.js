@@ -11,7 +11,7 @@ import {
 
 const mapStateToProps = (state, ownProps) => ({
         likes: selectPostLikes(state, ownProps),
-        likedByCurrentUser: selectPostLikers(state, ownProps).includes(state.session.id), // indicates wheather or not the curretnt user liked the post
+        likedByCurrentUser: selectPostLikers(state, ownProps).includes(state.session.id), 
         currentUserId: state.session.id,
 });
 
