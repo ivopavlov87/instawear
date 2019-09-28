@@ -8,6 +8,7 @@ class PostForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
         this.closeForm = this.closeForm.bind(this);
+        // this.close = this.close.bind(this);
         this.renderSignupForm = this.renderSignupForm.bind(this);
     }
 
@@ -38,6 +39,17 @@ class PostForm extends React.Component {
         });
     }
 
+    // close() {
+    //     this.setState({
+    //         caption: '',
+    //         location: '',
+    //         photo: null,
+    //         preview: null
+    //     });
+
+    //     document.getElementById('new-post').className = 'hide';
+    // }
+
     handleSubmit(e) {
         e.preventDefault();
 
@@ -61,7 +73,7 @@ class PostForm extends React.Component {
             return <div></div>
         } else {
         return (
-            <div className="upload-frame" id="postform">
+            <div className="upload-frame">
                 <div className="upload-form">
 
                     <div className="post-header">
@@ -71,22 +83,24 @@ class PostForm extends React.Component {
 
                     <div className="post-content">
                         <div className="preview-img">
-                            <img src={this.state.preview} />
+                            <img className="preview" src={this.state.preview} />
                         </div>
 
-                        <div className="form-caption">
-                            <textarea type="text"
-                                value={this.state.caption}
-                                placeholder="Say Something..."
-                                onChange={this.update("caption")}
-                            />
-                        </div>
-                        <div className="form-location">
-                            <input type="text"
-                                value={this.state.location}
-                                placeholder="Location..."
-                                onChange={this.update("location")}
-                            />
+                        <div className="post-form-details">
+                            <div className="form-caption">
+                                <textarea type="text"
+                                    value={this.state.caption}
+                                    placeholder="Say Something..."
+                                    onChange={this.update("caption")}
+                                />
+                            </div>
+                            <div className="form-location">
+                                <input type="text"
+                                    value={this.state.location}
+                                    placeholder="Location..."
+                                    onChange={this.update("location")}
+                                />
+                            </div>
                         </div>
                     </div>
 
@@ -97,7 +111,7 @@ class PostForm extends React.Component {
                 </div>
 
                 <div className="screen"
-                    onClick={this.closForm}>
+                    onClick={this.closeForm}>
                 </div>
             </div>
         );
@@ -124,10 +138,12 @@ class PostForm extends React.Component {
     render() {
         if (this.props.currentUser) {
             return (
-                <div className="add-post-btn">
+                <div>
                     {this.renderPostForm()}
-                    {this.popUp()}
-                </div>
+                    <div id="new-post" className="add-post-btn">
+                        {this.popUp()}
+                    </div>
+                </div>    
             );      
         } 
     }

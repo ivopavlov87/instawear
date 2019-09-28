@@ -15,8 +15,10 @@
     // position: sticky;
     top: 0px;
     height: 80px;
-    z-index: 2;
-    min-width: 800px;
+    z-index: 4;
+    // min-width: 800px;
+    position: fixed;
+    width: 100%;
 }
 
 .nav-links {
@@ -28,7 +30,7 @@
     width: 85%;
 }
 
-.nav-links img {
+.navbar-img {
     width: 24px;
     height: 24px;
     margin-left: 30px; 
@@ -60,6 +62,3 @@
     margin-top: 5px;
 }
 
-// .add-post-btn {
-
-// }

@@ -37,43 +37,6 @@ class ProfileHeader extends React.Component {
         });
     }
 
-    handleCover(e) {
-        this.setState({ photoFile: e.currentTarget.files[0] }, () => {
-            const formData = new FormData();
-
-            if (this.state.photoFile) {
-                formData.append('user[cover_photo]', this.state.photoFile);
-            }
-            this.props.updateUser({
-                formData,
-                id: this.state.id
-            });
-        });
-    }
-
-    updateCover() {
-        let { currentUserId, user } = this.props;
-        if (currentUserId === user.id) {
-            return (
-                <div className="edit-single-image-cover">
-                    <div className="edit-cover-div">
-                        <input
-                            id="setting-upload-cover"
-                            className="upload-cover"
-                            type="file"
-                            accept=".jpg, .png, .jpeg"
-                            onChange={this.handleCover}
-                        />
-                        <label htmlFor="setting-upload-cover" className="edit-cover">
-                            <i className="camera-icon"></i>
-                            <span>Edit Cover</span>
-                        </label>
-                    </div>
-                </div>
-            );
-        }
-    }
-
     updateAvatar() {
         let { currentUserId, user } = this.props;
         if (currentUserId === user.id) {
