@@ -27,10 +27,12 @@ class CommentIndexItem extends React.Component {
     render () {
         if (this.props.user === undefined) {
             return <></>; 
-        } else {
+        } 
+
+        if (this.props.location.pathname === '/feed') {
             return (
                 <div className="comment-index-item">
-                    <div className ="comment-item-line">
+                    <div className="comment-item-line">
                         <Link to={`/user/${this.props.user.id}`}>
                             <p><strong id='commenter-username'>
                                 {this.props.user.username}
@@ -38,7 +40,44 @@ class CommentIndexItem extends React.Component {
                         </Link>
 
                         <p>{this.props.comment.body}</p>
-                        {this.renderDelete()}  
+                        {this.renderDelete()}
+                    </div>
+                </div>
+            );
+        } else {
+            let { comment, user } = this.props;
+            return (
+                // <div className="post-show-comment">
+                //     <div className="show-comment-index-item">
+                //         <Link to={`/user/${this.props.user.id}`}>
+                //             <img src={this.props.user.profilePhoto} />
+                //         </Link>
+                //         <div className="comment-item-line">
+                //             <Link to={`/user/${this.props.user.id}`}>
+                //                 <p><strong id='commenter-username'>
+                //                     {this.props.user.username}
+                //                 </strong></p>
+                //             </Link>
+
+                //             <p>{this.props.comment.body}</p>
+                //             {this.renderDelete()}
+                //         </div>
+                //     </div>
+                //     <p className="post-create-date">date created</p>
+                // </div>
+                <div className="post-show-caption">
+                    <Link to={`/user/${user.id}`}>
+                        <img src={user.profilePhoto} alt={user.username} />
+                    </Link>
+                    <div>
+                        <div>
+                            <Link to={`/user/${user.id}`}>
+                                <strong>{user.username}</strong>
+                            </Link>
+                            <p>{comment.body}</p>
+                            {this.renderDelete()}
+                        </div>
+                        <p className="post-create-date">date created</p>
                     </div>
                 </div>
             );

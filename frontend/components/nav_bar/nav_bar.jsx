@@ -24,7 +24,8 @@ class NavBar extends React.Component {
                 <div className="nav-links">
                     <div className="navbar-left">
                         <Link to="/feed">
-                            <img className="navbar-img" src="/images/instagram.png" alt="instawear" />
+                            {/* <img className="navbar-img" src="/images/instagram.png" alt="instawear" /> */}
+                            <i className="fab fa-instagram"></i>
                             <div className="vertical-devider"></div>
                             <h4 className="navbar-logo">Instawear</h4>
                         </Link>

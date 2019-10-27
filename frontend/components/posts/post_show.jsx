@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 import CommentIndexContainer from '../comments/comment_index_container';
 import CreateCommentFormContainer from '../comments/create_comment_form_container';
 import LikeBar from '../likes_bar/like_bar_container'
+import NavBarContainer from '../nav_bar/nav_bar_container';
+
 
 class PostShow extends React.Component {
     constructor(props) {
         super(props);
+        this.state = { loading: true };
 
         this.closeForm = this.closeForm.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
@@ -14,7 +17,8 @@ class PostShow extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchPost(this.props.match.params.id);
+        this.props.fetchPost(this.props.match.params.id)
+            .then(() => this.setState({ loading: false }));
     }
 
     componentDidUpdate(prevProps) {
@@ -55,63 +59,85 @@ class PostShow extends React.Component {
     render() {
         const user = this.props.user;
         const post = this.props.post;
-        if (this.props.post === undefined) {
+
+        if (this.state.loading === true) {
             return (
-                <div>Page is not available</div>
-            );
-        } else {
-            return (
-                <div id="post-show-container" className="post-show-container">
-                    <div className="post-show-close post-show-grid">
-                        <a className="close" onClick={this.closeForm}></a>
-                    </div>
-                    <div className="post-show-content">
-                        <header>
-                            <div className="post-show-header">
-                                <Link to={`/user/${user.id}`}>
-                                    <img src={user.profilePhoto} alt={user.username} />
-                                </Link>
-                                <Link to={`/user/${user.id}`}>
-                                    <p>{user.username}</p>
-                                </Link>
-                                <div className="post-dropdown">
-                                    <i></i>
-                                    {this.removePost()}
-                                    {/* dropdown ul goes here */}
-
-                                </div>
-                            </div>
-
-                            {/* {this.popUp()} */}
-                        </header>
-
-                        <div className="post-show-img">
-                            <img src={post.photoUrl} />
-                        </div>
-
-                        <div className="post-show-actions">
-                            {/* like bar goes here also pass the postId*/}
-                            <LikeBar postId={this.props.post.id} />
-                            {/* comment bar goes here */}
-                        </div>
-
-                        <div className="post-info">
-                            <p><strong>{user.username}'S</strong>
-                                <span>IMAGE</span>
-                            </p>
-                            <div className="dot-separator"></div>
-                            <p className="post-create-date"> </p>
-                        </div>
-
-                        <div className="post-caption">{post.caption}</div>
-                        <div className="post-location">{post.location}</div>
-
-                        <CommentIndexContainer post={post} />
-                        <CreateCommentFormContainer postId={this.props.post.id} currentUserId={this.props.currentUserId} />
-                    </div>
+                <div className="loading">
+                    <i className="fab fa-instagram" />
                 </div>
             );
-        } 
+        } else {
+            if (this.props.post === undefined) {
+                return (
+                    <div>Page is not available</div>
+                );
+            } else {
+                return (
+                    <div>
+                        <NavBarContainer />
+                        {/* <div className="post-show-close post-show-grid">
+                            <a className="close" onClick={this.closeForm}></a>
+                        </div> */}
+                        <div id="post-show-container" className="post-show-container">
+                            <div className="post-show-content">
+                                <div className="post-show-img">
+                                    <img src={post.photoUrl} />
+                                </div>
+
+                            <div className="post-show-right">
+
+                                <div className="post-show-header">
+                                        <div className="post-author-info">
+                                            <Link to={`/user/${user.id}`}>
+                                                <img src={user.profilePhoto} alt={user.username} />
+                                            </Link>
+                                            <div>
+                                                <Link to={`/user/${user.id}`}>
+                                                    <strong>{user.username}</strong>
+                                                </Link>
+                                                <p>{post.location}</p>
+                                            </div>
+                                        </div>
+                                        <img src="/images/ellipsis.png" alt="edit post"/>
+                                </div>
+                                    
+
+                                    <div className="post-body">
+                                        <div className="post-show-caption">
+                                            <Link to={`/user/${user.id}`}>
+                                                <img src={user.profilePhoto} alt={user.username} />
+                                            </Link>
+                                            <div>
+                                                <div>
+                                                    <Link to={`/user/${user.id}`}>
+                                                        <strong>{user.username}</strong>
+                                                    </Link>
+                                                    <p>{post.caption}</p>
+                                                </div>
+                                                <p className="post-create-date">date created</p>
+                                            </div>
+                                        </div>
+                                    
+                                    <div className="post-comments">
+                                            <CommentIndexContainer post={post} />
+                                    </div>
+                                    </div>
+
+                                    <LikeBar postId={this.props.post.id} />
+                                    <p className="post-create-date-detailed">date created</p>
+                                    <CreateCommentFormContainer postId={this.props.post.id} currentUserId={this.props.currentUserId} />
+                                </div>                            
+                            </div>
+                        </div> 
+                        <footer>
+                            <a href="">ABOUT ME</a>
+                            <a href="">GITHUB</a>
+                            <a href="">LINKEDIN</a>
+                        </footer> 
+                    </div>
+                );
+            } 
+        }
     }
 }
 

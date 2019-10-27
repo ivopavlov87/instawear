@@ -6,11 +6,13 @@ import NavBarContainer from '../nav_bar/nav_bar_container';
 class PostIndex extends React.Component {
     constructor(props) {
         super(props);
+        this.state = { loading: true };
         this.renderPosts = this.renderPosts.bind(this);
     }
 
     componentDidMount() {
-        this.props.fetchAllPosts();
+        this.props.fetchAllPosts()
+            .then(() => this.setState({ loading: false }));
     }
 
     renderPosts() {
@@ -45,14 +47,22 @@ class PostIndex extends React.Component {
     }
     
     render() {
-        return (
-            <div>
-                <NavBarContainer />
-                <section className="feed-posts-section">
-                    {this.renderPosts()}
-                </section>
-            </div>    
-        );
+        if (this.state.loading === true) {
+            return (
+                <div className="loading">
+                    <i className="fab fa-instagram" />
+                </div>
+            );
+        } else {
+            return (
+                <div>
+                    <NavBarContainer />
+                    <section className="feed-posts-section">
+                        {this.renderPosts()}
+                    </section>
+                </div>    
+            );
+        }
     }
 }
 
