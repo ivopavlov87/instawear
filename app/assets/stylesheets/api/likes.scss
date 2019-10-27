@@ -5,6 +5,7 @@
 .like-icon {
     padding-left: 16px;
     padding-right: 16px;
+    border-top: 1px solid #ebebeb;
 }
 
 .like-icon p {
@@ -15,6 +16,15 @@
     // padding-right: 10px;
     // padding-bottom: 10px;
     margin-right: 8px;
-    margin-bottom: 10px;
+    margin-top: 8px;
+    margin-bottom: 6px;
     cursor: pointer;
+}
+
+.like-sgs {
+    font-weight: normal;
+}
+
+.like-sgs-strong {
+    font-weight: 600;
 }

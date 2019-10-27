@@ -24,7 +24,8 @@ class NavBar extends React.Component {
                 <div className="nav-links">
                     <div className="navbar-left">
                         <Link to="/feed">
-                            <img src="/images/instagram.png" alt="instawear" />
+                            {/* <img className="navbar-img" src="/images/instagram.png" alt="instawear" /> */}
+                            <i className="fab fa-instagram"></i>
                             <div className="vertical-devider"></div>
                             <h4 className="navbar-logo">Instawear</h4>
                         </Link>
@@ -35,11 +36,11 @@ class NavBar extends React.Component {
                     <div className="navbar-right">
                         <CreatePostFormContainer />
                         <div className="profile-btn">
-                            <img onClick={this.handleProfile} src="/images/user.png" alt={this.props.currentUser.username} />
+                            <img className="navbar-img" onClick={this.handleProfile} src="/images/user.png" alt={this.props.currentUser.username} />
                         </div>
 
                         <div className="logout-btn" onClick={this.handleLogout}>
-                            <img src="/images/logout.png" alt="logout" />
+                            <img className="navbar-img" src="/images/logout.png" alt="logout" />
                         </div>
                     </div>
                 </div> 

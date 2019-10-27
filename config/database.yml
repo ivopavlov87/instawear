@@ -19,7 +19,8 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV['DATABASE_URL'] %> # for dock
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %> # for dock
 
 development:
   <<: *default
@@ -78,8 +79,17 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# production:
+#   <<: *default
+#   database: instawear_production
+#   username: instawear
+#   password: <%= ENV['INSTAWEAR_DATABASE_PASSWORD'] %>
+
+# for dock
 production:
   <<: *default
-  database: instawear_production
-  username: instawear
-  password: <%= ENV['INSTAWEAR_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  host: db
+  username: postgres
+  # we don't need to specify a password
+  password:

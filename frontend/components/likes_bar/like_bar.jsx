@@ -33,9 +33,11 @@ class LikeBar extends React.Component {
     render() {
         let likes_num = "";
         if (this.props.likes.length === 1) {
-            likes_num = "1 like"
+            likes_num = "1 like";
         } else if (this.props.likes.length > 0) {
-            likes_num = this.props.likes.length + " " + "likes"
+            likes_num = this.props.likes.length + " " + "likes";
+        } else {
+            likes_num = <span className="like-sgs">Be the first to <strong className="like-sgs-strong">like this</strong></span>
         }
 
         if (this.props.likedByCurrentUser) {
