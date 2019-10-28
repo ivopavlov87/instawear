@@ -1,4 +1,5 @@
 # instawear
+[Live Demo](https://instawear.herokuapp.com/)
 #### A single-page Instagram clone where users can share, comment, and like posts.
 
 
