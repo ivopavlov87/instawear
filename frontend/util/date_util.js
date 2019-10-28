@@ -118,7 +118,6 @@ export const reformatCreatedAt = date => {
             d = newDate;
         }
     }
-    debugger
     const months = {
         0: 'January',
         1: 'February',
@@ -144,7 +143,6 @@ export const reformatCreatedAt = date => {
     };
 
     if (!(timeUnit in units)) { //|| (timeUnit === "w" && d > 1 )) {
-        debugger
         const obj = new Date(date);
         const currentTime = new Date();
         const currentYear = currentTime.getFullYear();
@@ -160,7 +158,6 @@ export const reformatCreatedAt = date => {
             return `${month} ${day}, ${year}`;
         }
     } else {
-        debugger
         if (d === '1') {
             return d + ' ' + units[timeUnit] + ' ago';
         } else {
