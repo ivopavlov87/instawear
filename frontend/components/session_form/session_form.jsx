@@ -202,6 +202,14 @@ class SessionForm extends React.Component {
                 <div className="get-app-msg">
                     <p>Get the real app.</p>
                 </div> 
+                <div className="get-real-app">
+                    <a href="https://apps.apple.com/us/app/instagram/id389801252">
+                        <img src="/images/appstore.png" alt="" />
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.instagram.android&hl=en_US">
+                        <img src="/images/googleplay.png" alt="" />
+                    </a>
+                </div>
             </div>
         );
     }

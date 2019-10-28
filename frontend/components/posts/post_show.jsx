@@ -4,6 +4,7 @@ import CommentIndexContainer from '../comments/comment_index_container';
 import CreateCommentFormContainer from '../comments/create_comment_form_container';
 import LikeBar from '../likes_bar/like_bar_container'
 import NavBarContainer from '../nav_bar/nav_bar_container';
+import { formatCreatedAt, reformatCreatedAt } from "../../util/date_util";
 
 
 class PostShow extends React.Component {
@@ -98,7 +99,7 @@ class PostShow extends React.Component {
                                                 <p>{post.location}</p>
                                             </div>
                                         </div>
-                                        <img src="/images/ellipsis.png" alt="edit post"/>
+                                        <img src="/images/ellipsis.png" alt="edit post" id="ellipsis-img"/>
                                 </div>
                                     
 
@@ -114,25 +115,26 @@ class PostShow extends React.Component {
                                                     </Link>
                                                     <p>{post.caption}</p>
                                                 </div>
-                                                <p className="post-create-date">date created</p>
+                                                <p className="post-create-date">{formatCreatedAt(post.created_at).toUpperCase()}</p>
                                             </div>
                                         </div>
                                     
-                                    <div className="post-comments">
+                                        <div className="post-comments">
                                             <CommentIndexContainer post={post} />
-                                    </div>
+                                        </div>
                                     </div>
 
                                     <LikeBar postId={this.props.post.id} />
-                                    <p className="post-create-date-detailed">date created</p>
+                                    {/* <p className="post-create-date-detailed">{reformatDate(formatCreatedAt(this.props.post.updated_at)).toUpperCase()}</p> */}
+                                    <p className="created-date-detailed">{reformatCreatedAt(this.props.post.updated_at).toUpperCase()}</p>
                                     <CreateCommentFormContainer postId={this.props.post.id} currentUserId={this.props.currentUserId} />
                                 </div>                            
                             </div>
                         </div> 
-                        <footer>
-                            <a href="">ABOUT ME</a>
-                            <a href="">GITHUB</a>
-                            <a href="">LINKEDIN</a>
+                        <footer className="about-links">
+                            <a href="https://anoushsaroyan.com">ABOUT ME</a>
+                            <a href="https://github.com/AnoushSaroyan">GITHUB</a>
+                            <a href="https://www.linkedin.com/in/anoushsaroyan/">LINKEDIN</a>
                         </footer> 
                     </div>
                 );

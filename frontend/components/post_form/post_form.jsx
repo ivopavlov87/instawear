@@ -20,7 +20,7 @@ class PostForm extends React.Component {
         const file = e.target.files[0];
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
-            this.setState({ photo: file, preview: fileReader.result });
+            this.setState({ photo: file, preview: fileReader.result});
         };
         if (file) {
             fileReader.readAsDataURL(file);
@@ -71,6 +71,11 @@ class PostForm extends React.Component {
     popUp() {
         if (!this.state.photo) {
             return <div></div>
+            // return (
+            //     <div className="loading">
+            //         <i className="fab fa-instagram" />
+            //     </div>
+            // );
         } else {
         return (
             <div className="upload-frame">
@@ -137,14 +142,22 @@ class PostForm extends React.Component {
 
     render() {
         if (this.props.currentUser) {
-            return (
-                <div>
-                    {this.renderPostForm()}
-                    <div id="new-post" className="add-post-btn">
-                        {this.popUp()}
+            // if (this.state.loading === true) {
+            //     return (
+            //         <div className="loading">
+            //             <i className="fab fa-instagram" />
+            //         </div>
+            //     );
+            // } else {
+                return (
+                    <div>
+                        {this.renderPostForm()}
+                        <div id="new-post" className="add-post-btn">
+                            {this.popUp()}
+                        </div>
                     </div>
-                </div>    
-            );      
+                ); 
+            // }     
         } 
     }
 }

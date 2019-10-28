@@ -1,0 +1,77 @@
+.splash-page {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15%;
+    margin-right: 15%;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.splash-animation {
+    display: flex;
+    flex-direction: row;
+}
+
+.splash-animation-imgs {
+    position: relative;
+    margin: auto;
+    width: 393px;
+    height: 605px;
+}
+
+.cover {
+    position: absolute;
+    width: 240px;
+    height: 425px;
+    left: 122px;
+    top: 107px;
+    animation-name: fade;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 20s;
+    animation-direction: alternate;
+}
+
+// #delay-1 {
+//     animation-delay: 10s;
+// }
+
+#delay-2 {
+    animation-delay: 6s;
+}
+
+#delay-3 {
+    animation-delay: 4s;
+}
+
+#delay-4 {
+    animation-delay: 2s;
+}
+
+#finish{
+    animation-delay: 0s;
+}
+
+// .phone-background {
+//     position: absolute;
+// }
+
+@keyframes fade {
+    0% {
+    opacity:1;
+  }
+  17% {
+    opacity:1;
+  }
+  25% {
+    opacity:0;
+  }
+  92% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
