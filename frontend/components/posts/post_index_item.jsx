@@ -46,11 +46,13 @@ class PostIndexItem extends React.Component {
                             <img src={user.profilePhoto} />
                         </Link>
                         <div>
-                            <p className="post-item-username">{user.username}</p>
+                            <Link to={`/user/${user.id}`}>
+                                <p className="post-item-username">{user.username}</p>
+                            </Link>
                             <p className="post-item-location">{post.location}</p>
                         </div>
                     </div>
-                    
+                    <img src="/images/ellipsis.png" alt="edit post" id="ellipsis-img"/>
                 </div>
                 <div className="post-img">
                     <img src={this.props.post.photoUrl} />

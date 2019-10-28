@@ -1,10 +1,24 @@
 import React from 'react';
 import CommentIndexItemContainer from './comment_index_item_container';
+import { formatCreatedAt, reformatCreatedAt } from "../../util/date_util";
 
 class CommentIndex extends React.Component {
 
     constructor(props) {
-        super(props)
+        super(props);
+        this.renderLatestCommentDate = this.renderLatestCommentDate.bind(this);
+    }
+
+    renderLatestCommentDate() {
+        if (this.props.match.path === "/feed" && this.props.comments.length >= 1) {
+            let lastCommentDate =
+                this.props.comments[this.props.comments.length - 1].created_at;
+            // let date = formatCreatedAt(lastCommentDate);
+            let date = reformatCreatedAt(lastCommentDate).toUpperCase();
+            return (
+                <p className="created-date-detailed">{date}</p>
+            );
+        }
     }
 
     render() {
@@ -36,6 +50,7 @@ class CommentIndex extends React.Component {
                             />)
                     }
                 </div>
+                {this.renderLatestCommentDate()}
             </div>
         );
     }

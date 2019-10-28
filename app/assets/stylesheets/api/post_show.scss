@@ -12,6 +12,7 @@
     height: 80vh;
     width: 100vw;
     margin-top: 81px;
+    margin-bottom: 60px;
 }
 
 .post-show-header img{
@@ -138,7 +139,7 @@
 
 }
 
-.post-create-date-detailed {
+.created-date-detailed {
     margin-left: 16px;
     font-weight: 400;
     color: #999;
@@ -153,4 +154,20 @@
     font-size: 12px;
     margin-left: 16px;
     margin-top: 2px;
+}
+
+.about-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 15px;
+    // padding-top: 40px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.about-links a {
+    text-decoration: none;
+    margin-right: 10px;
+    color: #505393;
 }

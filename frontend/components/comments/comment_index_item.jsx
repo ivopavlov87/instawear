@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { formatCreatedAt } from "../../util/date_util";
 
 class CommentIndexItem extends React.Component {
     constructor(props) {
@@ -77,7 +77,7 @@ class CommentIndexItem extends React.Component {
                             <p>{comment.body}</p>
                             {this.renderDelete()}
                         </div>
-                        <p className="post-create-date">date created</p>
+                        <p className="post-create-date">{formatCreatedAt(comment.created_at).toUpperCase()}</p>
                     </div>
                 </div>
             );
