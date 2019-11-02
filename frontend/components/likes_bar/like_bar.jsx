@@ -45,16 +45,16 @@ class LikeBar extends React.Component {
                 <div className="like-icon">
                     <img src="/images/red-like.png"
                         onClick={this.unlike}/>
-                    <img src="/images/comment.png" alt="leave a comment" onClick={this.pushToPostShow} />
+                    <img src="/images/feed-comment.png" alt="leave a comment" onClick={this.pushToPostShow} />
                     <p className="num-likes">{likes_num}</p>
                 </div>
             );
         } else {
             return (
                 <div className="like-icon">
-                    <img src="/images/white-like.png"
+                    <img src="/images/feed-like.png"
                         onClick={this.like} />
-                    <img src="/images/comment.png" alt="leave a comment" onClick={this.pushToPostShow} />
+                    <img src="/images/feed-comment.png" alt="leave a comment" onClick={this.pushToPostShow} />
                     <p className="num-likes">{likes_num}</p>
                 </div>
             );
