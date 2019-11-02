@@ -6,6 +6,7 @@ class Api::UsersController < ApplicationController
 
   def show 
     @user = User.find(params[:id])
+    @posts = @user.posts.with_attached_photo
     render :show, status: 200
   end
 

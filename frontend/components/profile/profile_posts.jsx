@@ -17,25 +17,24 @@ class ProfilePosts extends React.Component {
 
         if (posts.length === 0) {
             return (
-                <div className="grid-content no-posts-div">
+                <div className="no-posts-div">
                     {/* <img src={`${asset_url}('path/to/no_posts.png')`} /> */}
                 </div>
             );
         } else {
             const postItems = posts.map((post, idx) => {
                 return (
-                    <figure className="item" key={`figure-${idx}`}>
+                    // <figure className="profile-post-item" key={`figure-${idx}`}>
                         <ProfilePostItem
                             key={idx}
                             post={post}
                             user={user} 
                         />
-                    </figure>
+                    // </figure>
                 ) 
             });
-
             return (
-                <div className="posts">
+                <div className="profile-posts">
                     {postItems}
                 </div>
             );
@@ -44,11 +43,15 @@ class ProfilePosts extends React.Component {
 
     render() {
         return (
-            <section className="grid-content posts-section">
+            <section className="profile-posts-section">
+                <div className="profile-posts-icon">
+                    <div className="posts-highlight">
+                        <img src="/images/layout.png" alt="" className="posts-layout-icon" />
+                        <p>POSTS</p>
+                    </div>   
+                </div>
                 {this.renderPosts()}
-            </section>
-
-            
+            </section>   
         );
     }
 }

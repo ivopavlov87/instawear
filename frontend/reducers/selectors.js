@@ -1,5 +1,5 @@
 export const selectUserPosts = (state, ownProps) => {
-    const user = selectUser(state, ownProps);
+    const user = state.entities.users[ownProps.match.params.id];
     const posts = [];
     if (user) {
         user.postIds.forEach(postId => {
@@ -20,10 +20,10 @@ export const selectUserPosts = (state, ownProps) => {
     // }
 };
 
-export const selectUser = (state, ownProps) => { 
-    const user = state.entities.users[ownProps.match.params.id];
-    return user;
-}
+// export const selectUser = (state, ownProps) => { 
+//     const user = state.entities.users[ownProps.match.params.id];
+//     return user;
+// }
 
 export const selectPost = (state, ownProps) => { 
     return state.entities.posts[ownProps.match.params.id]

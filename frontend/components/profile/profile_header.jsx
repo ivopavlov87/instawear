@@ -9,17 +9,19 @@ class ProfileHeader extends React.Component {
         const user = this.props.user;
 
         this.state = {
-            id: user.id,
-            username: user.username,
-            email: user.email,
-            profilePhoto: user.profilePhoto,
-            coverPhoto: user.coverPhoto,
+            // id: user.id,
+            // username: user.username,
+            // email: user.email,
+            // name: user.name,
+            // bio: user.bio,
+            // gender: user.gender,
+            // website: user.website,
+            // phone_number: user.phone_number,
+            // profilePhoto: user.profilePhoto,
             photoFile: null,
         };
 
         this.handleAvatar = this.handleAvatar.bind(this);
-        this.handleCover = this.handleCover.bind(this);
-        this.updateCover = this.updateCover.bind(this);
         this.updateAvatar = this.updateAvatar.bind(this);
     }
 
@@ -32,7 +34,7 @@ class ProfileHeader extends React.Component {
             }
             this.props.updateUser({
                 formData,
-                id: this.state.id
+                id: this.props.user.id
             });
         });
     }
@@ -50,48 +52,54 @@ class ProfileHeader extends React.Component {
                         onChange={this.handleAvatar}
                     />
                     <label htmlFor="setting-upload-avatar">
-                        <img src={this.props.user.profilePhoto} className="profile_avatar" />
+                        <img src={this.props.user.profilePhoto} className="profile-avatar" />
                     </label>
                 </div>
             );
         } else {
             return <div className="user-photo">
-                <img src={this.props.user.profilePhoto} className="profile_avatar" />
+                <img src={this.props.user.profilePhoto} className="profile-avatar" />
             </div>
         }
     }
 
     render() {
-        return (
-            <div>
-                <section className="profile-header-section">
-                    <div className="grid-content user-info-top">
-                        <form className="user-description">
-                            <div className="content clearfix">
-                                <div className="user-photo-div">
-                                    {this.updateAvatar()}
-                                </div>
-                                <div className="user-info">
-                                    <div className="top-block">
-                                        <h1 className="user-name">
-                                            <span className="user-info-span">
-                                                @{this.state.username}
-                                            </span>
-                                        </h1>
-                                        <div className="follow">
-                                            {/* <FollowBarContainer user={this.props.user}/> */}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+        let { user } = this.props; 
+        let followBtn = user.id !== this.props.currentUserId ? (<div>
+            {/* <FollowBarContainer user={this.props.user} /> */}
+            <button className="profile-header-btn follow-btn">Follow</button>
+            </div>) : <></>;
 
-                        <div className="profile-menu">
-                            <ProfileTabs user={this.props.user} />
-                        </div>
+        let editProfileBtn = user.id === this.props.currentUserId ? (<div>
+                <button className="profile-header-btn edit-profile-btn">Edit Profile</button>
+            </div>) : <></>;
+
+        return (
+            <header className="profile-header-section">
+                <div className="user-avatar">
+                    {this.updateAvatar()}
+                </div>
+                <div className="user-main">
+                    <div className="user-info">
+                        <h2 className="profile-username">
+                            {user.username}
+                        </h2>
+                        {followBtn}
+                        {editProfileBtn}
                     </div>
-                </section>
-            </div>
+                    <div className="profile-menu">
+                        <p><strong>{user.postIds.length}</strong> posts</p>
+                    </div>
+                    <div className="profile-bio">
+                        <p><strong>{user.name}</strong></p>
+                        <p>{user.bio}</p>
+                        <a>{user.website}</a>
+                    </div>
+                </div>
+                {/* <div className="profile-menu">
+                    <ProfileTabs user={this.props.user} />
+                </div> */}
+            </header>
         );
     }
 }
