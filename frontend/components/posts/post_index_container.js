@@ -6,10 +6,12 @@ const mapStateToProps = state => {
     // will select all the posts from the current user and the users that the current user follows in the future
     const posts = state.entities.posts;
     const users = state.entities.users;
+    const currentUser = users[state.session.id];
 
     return ({
         posts,
-        users
+        users,
+        currentUser
     });
 };
 

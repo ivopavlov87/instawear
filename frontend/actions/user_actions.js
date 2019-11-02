@@ -23,16 +23,15 @@ const receiveCurrentUser = user => {
 
 export const fetchUser = id => dispatch => {
     return UserAPIUtil.fetchUser(id)
-        .then(user => dispatch(receiveUser(user)));
+        .then(payload => dispatch(receiveUser(payload)));
 };
 
 export const fetchUsers = () => dispatch => {
     return UserAPIUtil.fetchUsers()
-        .then(users => dispatch(receiveUsers(users)));
+        .then(payload => dispatch(receiveUsers(payload)));
 };
 
 export const updateUser = (user) => (dispatch) => {
-    
     return UserAPIUtil.updateUser(user).
         then(user => {
             return dispatch(receiveCurrentUser(user));

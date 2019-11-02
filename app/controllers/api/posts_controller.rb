@@ -9,7 +9,11 @@ class Api::PostsController < ApplicationController
   def show
     @post = Post.with_attached_photo
             .includes(:comments, :likes, :user, :likers).where(id: params[:id])[0]
-    render :show
+    if @post 
+      render :show, status: 200 
+    else 
+      render json: ["Post not found"], status: 404 
+    end 
   end
   
   def create

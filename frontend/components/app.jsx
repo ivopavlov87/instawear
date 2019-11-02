@@ -11,9 +11,6 @@ import {
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 
-// import Logo from './logo/logo';
-// import Sidebar from './sidebar/sidebar';
-
 import ProfileContainer from './profile/profile_container';
 // import CreatePostFormContainer from './post_form/create_post_form_container';
 import PostShowContainer from './posts/post_show_container';

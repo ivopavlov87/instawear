@@ -1,11 +1,22 @@
 import { connect } from 'react-redux';
 import Profile from './profile';
 import { fetchUser, updateUser} from '../../actions/user_actions';
-import { selectUserPosts, selectUser } from '../../reducers/selectors';
+import { selectUserPosts } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => { 
-    let user = selectUser(state, ownProps);
+    let user = state.entities.users[ownProps.match.params.id];
     let posts = selectUserPosts(state, ownProps);
+    // const posts = [];
+    // if (user) {
+    //     user.postIds.forEach(postId => {
+    //         const post = state.entities.posts[postId];
+
+    //         if (post !== undefined) {
+    //             posts.push(post)
+    //             debugger
+    //         }
+    //     });
+    // }
 
     return ({
         user,

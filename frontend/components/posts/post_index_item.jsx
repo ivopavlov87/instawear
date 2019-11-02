@@ -52,7 +52,8 @@ class PostIndexItem extends React.Component {
                             <p className="post-item-location">{post.location}</p>
                         </div>
                     </div>
-                    <img src="/images/ellipsis.png" alt="edit post" id="ellipsis-img"/>
+                    <img src="/images/ellipsis.png" alt="edit post" id="ellipsis-img"
+                        onClick={() => this.props.changeSelected(post.id)}/>
                 </div>
                 <div className="post-img">
                     <img src={this.props.post.photoUrl} />

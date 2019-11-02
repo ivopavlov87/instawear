@@ -10,15 +10,11 @@ class ProfileTabs extends React.Component {
         const user = this.props.user;
         return (
             <div className="profile-tabs">
-                <ul>
-                    <li>
-                        <Link to={`/user/${user.id}`}>
-                            <span>{user.postIds.length}</span>
-                            <br />
-                            POSTS
-                        </Link>
-                    </li>
-                </ul>
+                <div>
+                    <span>{user.postIds.length}</span>
+                    <br />
+                    POSTS
+                </div>
                 {/* <p><strong>{user.postIds.length}</strong>  posts</p> */}
             </div>
         );
