@@ -8,6 +8,9 @@
     width: calc(100% - 40px);
     margin: 0 auto 30px;
     max-width: 935px;
+    // min-height: 80vh;
+    // height: 80vh;
+    // overflow-y: scroll;
 }
 
 .profile-header-section {
@@ -35,6 +38,7 @@
     min-height: 40%;
     box-sizing: border-box;
     min-width: 800px;
+    // overflow: scroll;
 }
 
 // .profile-posts div {
@@ -185,3 +189,11 @@
     align-items: center;
     width: 25%;
 }
+
+// .profile-posts-section {
+//     overflow: scroll;
+// }
+
+// .profile-main {
+
+// }

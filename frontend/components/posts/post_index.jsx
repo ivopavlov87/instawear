@@ -1,17 +1,20 @@
 import React from 'react';
 import PostIndexItem from './post_index_item';
 import NavBarContainer from '../nav_bar/nav_bar_container';
-import { Link } from 'react-router-dom';
+import SharePostForm from '../post_form/share_post_form';
+import { Link, withRouter } from 'react-router-dom';
 
 
 class PostIndex extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { loading: true, selected: null };
+        this.state = { loading: true, selected: null, sharing: false, deleting: false };
         this.renderPosts = this.renderPosts.bind(this);
         this.renderPopUp = this.renderPopUp.bind(this);
         this.changeSelected = this.changeSelected.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+        this.renderShareForm = this.renderShareForm.bind(this);
+        this.handleHistoryPush = this.handleHistoryPush.bind(this);
     }
 
     componentDidMount() {
@@ -24,23 +27,32 @@ class PostIndex extends React.Component {
     //         .then(() => this.setState({ loading: false }));
     // }
 
+    handleHistoryPush() {
+        this.props.history.push(`/posts/${this.state.selected}`);
+    }
+
     renderPopUp() {
         let { currentUser } = this.props;
         let deleteBtn = currentUser.postIds.includes(this.state.selected) ? (
             <div onClick={this.handleDelete}>
                 <p>Delete Post</p>
             </div>
-        ) : <div></div>;
+        ) : null;
+        // (
+        //     <div onClick={ () => { this.setState({ sharing: true }) } }>
+        //         <p>Share Post</p>
+        //     </div>
+        // );
 
         return (
             this.state.selected === null ? <div></div> : (
                 <div>
                     <div className="popup-frame">
                         {deleteBtn}
-                        <div onClick={() => this.changeSelected(null)}>
-                            <Link to={`/posts/${this.state.selected}`}>
-                                Go to Post
-                            </Link>
+                        <div onClick={() => { this.changeSelected(null); this.handleHistoryPush() }}>
+                            {/* <Link to={`/posts/${this.state.selected}`}> */}
+                                <p>Go to Post</p>
+                            {/* </Link> */}
                         </div>
                         <div id="popup-cancel" onClick={() => this.changeSelected(null)}>
                             <p>Cancel</p>
@@ -55,10 +67,24 @@ class PostIndex extends React.Component {
         );
     }
 
+    renderShareForm() {
+        let { createPost, posts } = this.props;
+        let post = posts[this.state.selected];
+
+        return this.state.sharing === false ? (
+            <></>
+        ) : (
+                <SharePostForm
+                    post={post}
+                    action={createPost}
+                    changeSelected={this.changeSelected} 
+                    />
+            );
+    }
+
     handleDelete() {
         let { removePost, posts } = this.props;
         let post = posts[this.state.selected];
-        debugger
         removePost(post).then(this.changeSelected(null));
     }
 
@@ -105,7 +131,21 @@ class PostIndex extends React.Component {
                     <i className="fab fa-instagram" />
                 </div>
             );
-        } else {
+        } 
+        // else if (this.state.deleting === true) {
+        //     return (
+        //         <div className="loading">
+        //             <p>Deleting...</p>
+        //         </div>
+        //     );
+        // } else if (this.state.sharing === true) {
+        //     return (
+        //         <div className="loading">
+        //             <p>Sharing...</p>
+        //         </div>
+        //     );
+        // } 
+        else {
             return (
                 <div>
                     <NavBarContainer />
@@ -113,10 +153,11 @@ class PostIndex extends React.Component {
                         {this.renderPosts()}
                     </section>
                     {this.renderPopUp()}
+                    {/* {this.renderShareForm()} */}
                 </div>    
             );
         }
     }
 }
 
-export default PostIndex;
+export default withRouter(PostIndex);

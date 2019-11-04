@@ -36,9 +36,9 @@
     margin-left: 30px; 
 }
 
-.nav-links img:hover {
-    cursor: pointer;
-}
+// .nav-links img:hover {
+//     cursor: pointer;
+// }
 
 .navbar-right {
     display: flex;
@@ -53,6 +53,10 @@
     align-items: center;
     justify-content: space-between;
     text-decoration: none;
+}
+
+.navbar-right img:hover {
+    cursor: pointer;
 }
 
 .navbar-logo {

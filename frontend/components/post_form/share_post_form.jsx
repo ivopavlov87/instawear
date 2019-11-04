@@ -1,82 +1,52 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-class PostForm extends React.Component {
+class SharePostForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.post;
-
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleFile = this.handleFile.bind(this);
+        this.state = { caption: '', location: '', photo: this.props.post.photo };
         this.closeForm = this.closeForm.bind(this);
-        // this.close = this.close.bind(this);
-        this.renderSignupForm = this.renderSignupForm.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     update(field) {
         return e => this.setState({ [field]: e.target.value });
     }
 
-    handleFile(e) {
-        const file = e.target.files[0];
-        const fileReader = new FileReader();
-        fileReader.onloadend = () => {
-            this.setState({ photo: file, preview: fileReader.result});
-        };
-        if (file) {
-            fileReader.readAsDataURL(file);
-
-        }
-
-        e.target.value = "";
-    }
-
     closeForm() {
+        this.props.changeSelected(null);
         this.setState({
             caption: '',
             location: '',
-            photo: null,
-            preview: null
+            photo: this.props.post.photo
         });
+
+        // this.props.changeSelected(null);
     }
-
-    // close() {
-    //     this.setState({
-    //         caption: '',
-    //         location: '',
-    //         photo: null,
-    //         preview: null
-    //     });
-
-    //     document.getElementById('new-post').className = 'hide';
-    // }
 
     handleSubmit(e) {
         e.preventDefault();
-
+        // const photo = this.props.post.photoUrl;
         const formData = new FormData();
         formData.append('post[caption]', this.state.caption);
-        formData.append('post[location]', this.state.location);        
+        formData.append('post[location]', this.state.location);
         formData.append('post[photo]', this.state.photo);
+
+        // debugger
+        // let post = this.state;
+        // this.props.action(formData)
+        //     .then(() => this.closeForm());
         this.props.action(formData)
             .then(() => {
                 this.setState({
                     caption: '',
                     location: '',
-                    photo: null,
-                    preview: null
+                    photo: this.props.post.photo
                 });
             });
     }
 
-    popUp() {
-        if (!this.state.photo) {
-            return <div></div>
-            // return (
-            //     <div className="loading">
-            //         <i className="fab fa-instagram" />
-            //     </div>
-            // );
-        } else {
+    render() {
         return (
             <div className="upload-frame">
                 <div className="upload-form">
@@ -88,7 +58,7 @@ class PostForm extends React.Component {
 
                     <div className="post-content">
                         <div className="preview-img">
-                            <img className="preview" src={this.state.preview} />
+                            <img className="preview" src={this.props.post.photoUrl} />
                         </div>
 
                         <div className="post-form-details">
@@ -120,46 +90,17 @@ class PostForm extends React.Component {
                 </div>
             </div>
         );
-        }
-    }
-
-    renderPostForm() {
-        return (
-            <label className="fancy-plus-button">
-                <img src="/images/add-button.png" alt="create a post"/>
-                <input type="file"
-                    accept="image/*"
-                    onChange={this.handleFile} 
-                    />              
-            </label>
-            
-        );
-    }
-
-    renderSignupForm() {
-        this.props.history.push("/signup");
-    }
-
-    render() {
-        if (this.props.currentUser) {
-            // if (this.state.loading === true) {
-            //     return (
-            //         <div className="loading">
-            //             <i className="fab fa-instagram" />
-            //         </div>
-            //     );
-            // } else {
-                return (
-                    <div>
-                        {this.renderPostForm()}
-                        <div id="new-post" className="add-post-btn">
-                            {this.popUp()}
-                        </div>
-                    </div>
-                ); 
-            // }     
-        } 
     }
 }
 
-export default PostForm;
+const mapStateToProps = state => ({
+    // postErrors: state.errors.posts
+    formTitle: "Share Post",
+    btnText: "Share"
+});
+
+// const mapDispatchToProps = dispatch => ({
+//     action: post => dispatch(createPost(post))
+// });
+
+export default connect(mapStateToProps)(SharePostForm);

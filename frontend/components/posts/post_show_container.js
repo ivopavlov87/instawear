@@ -6,8 +6,7 @@ import PostShow from './post_show';
 
 const mapStateToProps = (state, ownProps) => {
     let post = selectPost(state, ownProps);
-    let user = post ? state.entities.users[post.user_id] : undefined; // remember that the post is a protected route and the profile too 
-        // and your're gonna have issues because of that, because you want the explore page that is gonna show a lot of posts
+    let user = post ? state.entities.users[post.user_id] : undefined; 
 
     return{
         currentUserId: state.session.id,

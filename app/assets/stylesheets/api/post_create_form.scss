@@ -45,7 +45,8 @@
 
 .upload-frame {
   position: fixed;
-  top: 120px;
+//   top: 120px;
+  top: 30%;
   left: 50%;
   margin-left: -240px;
   background-color: rgb(255, 255, 255);
@@ -79,6 +80,7 @@
     padding: 20px 16px 20px;
     display: flex;
     height: 150px;
+    justify-content: center;
 }
 
 .preview-img {
@@ -175,7 +177,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 14px;
-    margin-top: 20px;
+    // margin-top: 20px;
     width: 250px;
     height: 150px;
 }
@@ -189,11 +191,13 @@
     border: 1px solid #ebebeb;
     margin: 5px 0;
     width: 230px;
+    padding-left: 12px;
 }
 
 .form-caption textarea {
     border: none;
     width: 100%;
+    height: 70px;
 }
 
 .form-caption {
@@ -206,6 +210,7 @@
     border: 1px solid #ebebeb;
     margin: 5px 0;
     width: 230px;
+    // height: 200px;
 }
 
 .form-location input {

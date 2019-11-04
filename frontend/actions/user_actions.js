@@ -1,4 +1,5 @@
 import * as UserAPIUtil from '../util/user_api_util';
+import { platform } from 'os';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
@@ -14,12 +15,12 @@ const receiveUsers = payload => ({
     payload
 });
 
-const receiveCurrentUser = user => {
-    return {
-        type: RECEIVE_CURRENT_USER,
-        user
-    };
-};
+// const receiveCurrentUser = payload => {
+//     return {
+//         type: RECEIVE_CURRENT_USER,
+//         payload
+//     };
+// };
 
 export const fetchUser = id => dispatch => {
     return UserAPIUtil.fetchUser(id)
@@ -33,8 +34,9 @@ export const fetchUsers = () => dispatch => {
 
 export const updateUser = (user) => (dispatch) => {
     return UserAPIUtil.updateUser(user).
-        then(user => {
-            return dispatch(receiveCurrentUser(user));
+        then(payload => {
+            // return dispatch(receiveCurrentUser(user));
+            return dispatch(receiveUser(payload));
         });
 };
 

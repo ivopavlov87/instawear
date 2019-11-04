@@ -1,4 +1,4 @@
-import PostForm from './post_form';
+import CreatePostForm from './create_post_form';
 import { createPost } from '../../actions/post_actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -20,4 +20,4 @@ const mapDispatchToProps = dispatch => ({
     action: post => dispatch(createPost(post))
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostForm)); 
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreatePostForm)); 

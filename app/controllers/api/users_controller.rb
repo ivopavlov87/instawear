@@ -5,9 +5,13 @@ class Api::UsersController < ApplicationController
   end
 
   def show 
-    @user = User.find(params[:id])
+    @user = User.where(id: params[:id]).includes(:posts)[0]
     @posts = @user.posts.with_attached_photo
-    render :show, status: 200
+    if @user 
+      render :show
+    else 
+      render json: ["No such user"], status: 404 
+    end 
   end
 
   def create
@@ -15,7 +19,7 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login(@user)
-      render :show, status: 200
+      render :create, status: 200
     else
       render json: @user.errors.full_messages, status: 422
     end
@@ -23,6 +27,7 @@ class Api::UsersController < ApplicationController
 
   def update 
     @user = current_user
+    @posts = @user.posts.with_attached_photo
     
     if @user.update(user_params)
       render :show, status: 200 
