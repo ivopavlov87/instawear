@@ -1,6 +1,5 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 
-// import { RECEIVE_POST, RECEIVE_POSTS } from '../actions/post_actions';
 import {
     RECEIVE_USERS,
     RECEIVE_USER
@@ -23,16 +22,21 @@ const usersReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_USER:
+            // debugger
             return Object.assign({}, state, action.payload.user); // check if this might be an issue 
         case RECEIVE_USERS:
             return action.payload.users;     
         case RECEIVE_CURRENT_USER:
-            return Object.assign({}, state, { [action.user.id]: action.user });
+            return Object.assign({}, state, { [action.payload.user.id]: action.payload.user });
         case RECEIVE_POST:
             return Object.assign({}, state, { [action.payload.user.id]: action.payload.user });
         case REMOVE_POST:
-            newState[action.post.user_id].postIds = newState[action.post.user_id].postIds
+            // debugger
+            let res = newState[action.post.user_id].postIds
                 .filter(postId => postId != action.post.id);
+            // debugger
+            newState[action.post.user_id].postIds = res;
+            // debugger
             return newState;    
         case RECEIVE_ALL_POSTS:
             return Object.assign({}, state, action.payload.users);   

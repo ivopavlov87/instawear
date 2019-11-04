@@ -52,7 +52,7 @@ class Profile extends React.Component {
             );
         } else {
             return ( 
-                <div>
+                <div className="profile-main">
                     <NavBarContainer />
                     <div className="profile-container">
                         <ProfileHeader
@@ -64,6 +64,11 @@ class Profile extends React.Component {
                         {/* <FollowBarContainer /> */}
                         <ProfilePosts user={user} posts={posts} />
                     </div>
+                    <footer className="about-links">
+                        <a href="https://anoushsaroyan.com">ABOUT ME</a>
+                        <a href="https://github.com/AnoushSaroyan">GITHUB</a>
+                        <a href="https://www.linkedin.com/in/anoushsaroyan/">LINKEDIN</a>
+                    </footer> 
                 </div>
             );
         }

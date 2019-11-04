@@ -28,8 +28,10 @@ const postsReducer = (state ={}, action) => {
             return Object.assign({}, state, { [action.payload.post.id]: action.payload.post });   
         case REMOVE_POST:
             delete newState[action.post.id];
+            // debugger
             return newState;
         case RECEIVE_USER:
+            // debugger
             return Object.assign({}, action.payload.posts);
         case RECEIVE_COMMENT:
             newState[action.comment.post_id].comment_ids.push(action.comment.id);

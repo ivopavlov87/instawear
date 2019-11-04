@@ -39,8 +39,11 @@ class Api::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    render :show
+    if @post && @post.user_id == current_user.id && @post.destroy 
+      render json: {}, status: 200
+    else 
+      render json: ['Post not found'], status: 404
+    end 
   end
 
   private

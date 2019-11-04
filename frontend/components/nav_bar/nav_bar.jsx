@@ -39,8 +39,8 @@ class NavBar extends React.Component {
                             <img className="navbar-img" onClick={this.handleProfile} src="/images/user.png" alt={this.props.currentUser.username} />
                         </div>
 
-                        <div className="logout-btn" onClick={this.handleLogout}>
-                            <img className="navbar-img" src="/images/logout.png" alt="logout" />
+                        <div className="logout-btn">
+                            <img className="navbar-img" src="/images/logout.png" alt="logout" onClick={this.handleLogout}/>
                         </div>
                     </div>
                 </div> 

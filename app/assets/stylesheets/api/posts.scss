@@ -92,6 +92,10 @@
     color: #999;
 }
 
+.caption-more:hover {
+    cursor: pointer;
+}
+
 .post-caption p {
     padding-left: 16px;
     padding-right: 16px;
@@ -124,7 +128,7 @@
 
 .popup-frame {
     position: fixed;
-    top: 40%;
+    top: 30%;
     left: 50%;
     margin-left: -190px;
     background-color: rgb(255, 255, 255);
@@ -140,14 +144,14 @@
     max-height: calc(100% - 40px);
 }
 
-.popup-frame a {
-    text-decoration: none;
-    color: black;
-}
+// .popup-frame a {
+//     text-decoration: none;
+//     color: black;
+// }
 
-.popup-frame a:hover {
-    color: #3897f0;
-}
+// .popup-frame a:hover {
+//     color: #3897f0;
+// }
 
 .popup-frame div {
     text-align: center;

@@ -5,7 +5,7 @@ json.user do
     end   
 end
 
-# @posts ||= []
+@posts ||= []
 
 json.posts do 
     @posts.each do |post|
