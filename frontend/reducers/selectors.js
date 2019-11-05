@@ -1,6 +1,7 @@
 export const selectUserPosts = (state, ownProps) => {
     const user = state.entities.users[ownProps.match.params.id];
     // debugger
+    // const user = ownProps.user
     const posts = [];
     if (user) {
         user.postIds.forEach(postId => {

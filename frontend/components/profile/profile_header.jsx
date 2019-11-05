@@ -67,12 +67,16 @@ class ProfileHeader extends React.Component {
         let { user } = this.props; 
         let followBtn = user.id !== this.props.currentUserId ? (<div>
             {/* <FollowBarContainer user={this.props.user} /> */}
-            <button className="profile-header-btn follow-btn">Follow</button>
+            {/* <button className="profile-header-btn follow-btn">Follow</button> */}
+            <FollowBarContainer user={user} followedByCurrentUser={user.followedByCurrentUser}/>
             </div>) : <></>;
 
         let editProfileBtn = user.id === this.props.currentUserId ? (<div>
                 <button className="profile-header-btn edit-profile-btn">Edit Profile</button>
             </div>) : <></>;
+
+        let followerCount = user.followerCount === 0 ? <p><strong>{user.followerCount}</strong> follower</p> :
+            <p><strong>{user.followerCount}</strong> followers</p>
 
         return (
             <header className="profile-header-section">
@@ -89,6 +93,8 @@ class ProfileHeader extends React.Component {
                     </div>
                     <div className="profile-menu">
                         <p><strong>{user.postIds.length}</strong> posts</p>
+                        {followerCount}
+                        <p><strong>{user.followingCount}</strong> following</p>
                     </div>
                     <div className="profile-bio">
                         <p><strong>{user.name}</strong></p>

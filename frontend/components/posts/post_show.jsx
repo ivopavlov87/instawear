@@ -92,8 +92,9 @@ class PostShow extends React.Component {
     handleDelete() {
         let { removePost } = this.props;
         let post = this.props.post;
-        removePost(post).then(this.changeSelected(null));
-        this.goToPreviousURL();
+        removePost(post).then(() => { 
+            this.changeSelected(null); this.goToPreviousURL();
+        });
     }
 
     changeSelected(id) {

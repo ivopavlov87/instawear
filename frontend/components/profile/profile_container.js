@@ -6,17 +6,6 @@ import { selectUserPosts } from '../../reducers/selectors';
 const mapStateToProps = (state, ownProps) => { 
     let user = state.entities.users[ownProps.match.params.id];
     let posts = selectUserPosts(state, ownProps);
-    // const posts = [];
-    // if (user) {
-    //     user.postIds.forEach(postId => {
-    //         const post = state.entities.posts[postId];
-
-    //         if (post !== undefined) {
-    //             posts.push(post)
-    //             debugger
-    //         }
-    //     });
-    // }
 
     return ({
         user,

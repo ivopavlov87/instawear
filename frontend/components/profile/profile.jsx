@@ -61,7 +61,7 @@ class Profile extends React.Component {
                             fetchUser={this.props.fetchUser}
                             currentUserId={this.props.currentUserId}
                         />
-                        {/* <FollowBarContainer /> */}
+                        {/* <FollowBarContainer user={user} /> */}
                         <ProfilePosts user={user} posts={posts} />
                     </div>
                     <footer className="about-links">
