@@ -8,16 +8,16 @@ class FollowBar extends React.Component {
         this.unfollow = this.unfollow.bind(this);
     }
 
-    componentDidMount() {
-        this.props.fetchUser(this.props.user);
-    }
+    // componentDidMount() {
+    //     this.props.fetchUser(this.props.user);
+    // }
 
-    componentDidUpdate() {
-        let { user } = this.props; 
-        if (user === undefined) {
-            this.props.fetchUser(user.id);
-        }
-    }
+    // componentDidUpdate() {
+    //     let { user } = this.props; 
+    //     if (user === undefined) {
+    //         this.props.fetchUser(user.id);
+    //     }
+    // }
 
     unfollow(e) {
         // e.stopPropagation();
@@ -29,8 +29,8 @@ class FollowBar extends React.Component {
 
     follow(e) {
         // e.stopPropagation();
-        const userId = this.props.user; // pass the userId from the profile
-        this.props.createFollow({ followed_id: userId, follower_id: this.props.currentUserId });
+        const userId = this.props.user.id; // pass the userId from the profile
+        this.props.createFollow({ following_id: userId});//, follower_id: this.props.currentUserId });
     }
 
     render() {
@@ -44,10 +44,10 @@ class FollowBar extends React.Component {
             return <></>
         }
 
-        if (user.followedByCurrentUser) {
+        if (this.props.followedByCurrentUser) {
             return (
                 <button
-                    className="following"
+                    className="profile-header-btn unfollow-btn"
                     onClick={this.unfollow}>
                     <i className="following-icon"></i>
                     Following
@@ -56,7 +56,7 @@ class FollowBar extends React.Component {
         } else {
             return (
                 <button
-                    className="follow"
+                    className="profile-header-btn follow-btn"
                     onClick={this.follow}>
                     <i className="follow-icon"></i>
                     Follow

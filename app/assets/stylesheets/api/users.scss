@@ -197,3 +197,12 @@
 // .profile-main {
 
 // }
+
+.profile-menu {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-menu p {
+    margin-right: 40px;
+}

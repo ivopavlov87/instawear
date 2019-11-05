@@ -37,7 +37,8 @@ class PostIndex extends React.Component {
             <div onClick={this.handleDelete}>
                 <p>Delete Post</p>
             </div>
-        ) : null;
+        ) : 
+        null;
         // (
         //     <div onClick={ () => { this.setState({ sharing: true }) } }>
         //         <p>Share Post</p>
@@ -85,7 +86,7 @@ class PostIndex extends React.Component {
     handleDelete() {
         let { removePost, posts } = this.props;
         let post = posts[this.state.selected];
-        removePost(post).then(this.changeSelected(null));
+        removePost(post).then(() => this.changeSelected(null));
     }
 
     changeSelected(id) {
