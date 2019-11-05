@@ -43,6 +43,7 @@ class Profile extends React.Component {
         const user = this.props.user;
         const posts = this.props.posts;
         const updateUser = this.props.updateUser;
+        const updateUserPhoto = this.props.updateUserPhoto;
 
         if (this.state.loading === true) {
             return (
@@ -58,8 +59,11 @@ class Profile extends React.Component {
                         <ProfileHeader
                             user={user}
                             updateUser={updateUser}
+                            updateUserPhoto={updateUserPhoto}
                             fetchUser={this.props.fetchUser}
                             currentUserId={this.props.currentUserId}
+                            errors={this.props.errors}
+                            clearErrors={this.props.clearErrors}
                         />
                         {/* <FollowBarContainer user={user} /> */}
                         <ProfilePosts user={user} posts={posts} />

@@ -45,14 +45,14 @@ const usersReducer = (state = {}, action) => {
             newState[action.follow.follower_id].followingCount += 1;
             newState[action.follow.following_id].followedByCurrentUser = true;
             // remove from followings and followers 
-            debugger
+            // debugger
             return newState;
         case REMOVE_FOLLOW:
             newState[action.following_id].followerCount -= 1;
             newState[action.follower_id].followingCount -= 1;
             newState[action.following_id].followedByCurrentUser = false;
             // same here
-            debugger
+            // debugger
             return newState;     
         default:
             return state;

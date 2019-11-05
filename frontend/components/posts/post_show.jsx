@@ -60,9 +60,7 @@ class PostShow extends React.Component {
     }
 
     renderEditForm() {
-        return this.state.editing === false ? (
-            <></>
-        ) : (
+        return this.state.editing === false ? (<></>) : (
             <EditPostForm
                 post={this.props.post}
                 history={this.props.history}
