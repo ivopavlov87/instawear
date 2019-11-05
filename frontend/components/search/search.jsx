@@ -25,16 +25,17 @@ class Search extends React.Component {
     render() {
         return (
             <div className="search-container">
+                <i className="fas fa-search"></i>
                 <input
                     id="search-input"
                     type="search"
-                    className="search--container-input"
+                    className="search-container-input"
                     placeholder="Search"
                     onChange={this.update}
                 />
-                <div className="search-icon">
+                {/* <div className="search-icon">
                     <i></i>
-                </div>
+                </div> */}
             </div>
         )
     }

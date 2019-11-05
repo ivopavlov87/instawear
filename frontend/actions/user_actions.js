@@ -40,6 +40,14 @@ export const updateUser = (user) => (dispatch) => {
         });
 };
 
+export const updateUserPhoto = (user) => (dispatch) => {
+    return UserAPIUtil.updateUserPhoto(user).
+        then(payload => {
+            // return dispatch(receiveCurrentUser(user));
+            return dispatch(receiveUser(payload));
+        });
+};
+
 export const searchUsers = username => dispatch => {
     return UserAPIUtil.searchUsers(username)
         .then(payload => dispatch(receiveUsers(payload)));

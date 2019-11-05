@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import ProfileTabs from './profile_tabs';
+// import { Link } from 'react-router-dom';
 import FollowBarContainer from '../follow-bar/follow_bar_container';
+import ProfileEditForm from './profile_edit';
+
 
 class ProfileHeader extends React.Component {
     constructor(props) {
@@ -19,10 +20,13 @@ class ProfileHeader extends React.Component {
             // phone_number: user.phone_number,
             // profilePhoto: user.profilePhoto,
             photoFile: null,
+            editing: false,
         };
 
         this.handleAvatar = this.handleAvatar.bind(this);
         this.updateAvatar = this.updateAvatar.bind(this);
+        this.renderEditForm = this.renderEditForm.bind(this);
+        this.changeEditing = this.changeEditing.bind(this);
     }
 
     handleAvatar(e) {
@@ -32,7 +36,7 @@ class ProfileHeader extends React.Component {
             if (this.state.photoFile) {
                 formData.append('user[profile_photo]', this.state.photoFile);
             }
-            this.props.updateUser({
+            this.props.updateUserPhoto({
                 formData,
                 id: this.props.user.id
             });
@@ -43,17 +47,18 @@ class ProfileHeader extends React.Component {
         let { currentUserId, user } = this.props;
         if (currentUserId === user.id) {
             return (
-                <div className="user-photo">
-                    <input
-                        id="setting-upload-avatar"
-                        className="upload-avatar"
-                        type="file"
-                        accept=".jpg, .png, .jpeg"
-                        onChange={this.handleAvatar}
-                    />
-                    <label htmlFor="setting-upload-avatar">
-                        <img src={this.props.user.profilePhoto} className="profile-avatar" />
+                <div className="user-photo"> 
+                    <label htmlFor="setting-upload-avatar" id="avatar-upload-label">
+                        <img src="/images/plus.png" alt="" id="avatar-upload-icon"/>
+                        <input
+                            id="setting-upload-avatar"
+                            className="upload-avatar"
+                            type="file"
+                            accept=".jpg, .png, .jpeg"
+                            onChange={this.handleAvatar}
+                        />
                     </label>
+                    <img src={this.props.user.profilePhoto} className="profile-avatar" />
                 </div>
             );
         } else {
@@ -61,6 +66,32 @@ class ProfileHeader extends React.Component {
                 <img src={this.props.user.profilePhoto} className="profile-avatar" />
             </div>
         }
+    }
+
+    renderEditForm() {
+        // return <ProfileEditForm
+        //     user={this.props.user}
+        //     updateUser={this.props.updateUser}
+        //     updateUserPhoto={this.props.updateUserPhoto}
+        //     closeForm={this.changeEditing}
+        //     errors={this.props.errors}
+        //     clearErrors={this.props.clearErrors}
+        // />
+        return this.state.editing === false ? (<></>) : (
+            <ProfileEditForm
+                user={this.props.user}
+                updateUser={this.props.updateUser}
+                closeForm={this.changeEditing}
+                errors={this.props.errors}
+                clearErrors={this.props.clearErrors}
+            />
+        );
+    }
+
+    changeEditing(bool) {
+        this.setState({
+            editing: bool
+        });
     }
 
     render() {
@@ -72,7 +103,11 @@ class ProfileHeader extends React.Component {
             </div>) : <></>;
 
         let editProfileBtn = user.id === this.props.currentUserId ? (<div>
-                <button className="profile-header-btn edit-profile-btn">Edit Profile</button>
+                <button onClick={() => { this.changeEditing(true) }} 
+                    className="profile-header-btn edit-profile-btn">
+                    Edit Profile
+                </button>
+                {/* pass the user and updateUser and errors*/}
             </div>) : <></>;
 
         let followerCount = user.followerCount === 0 ? <p><strong>{user.followerCount}</strong> follower</p> :
@@ -99,12 +134,13 @@ class ProfileHeader extends React.Component {
                     <div className="profile-bio">
                         <p><strong>{user.name}</strong></p>
                         <p>{user.bio}</p>
-                        <a>{user.website}</a>
+                        <p><a href={`https://${user.website}`}><strong>{user.website}</strong></a></p>
                     </div>
                 </div>
                 {/* <div className="profile-menu">
                     <ProfileTabs user={this.props.user} />
                 </div> */}
+                {this.renderEditForm()}
             </header>
         );
     }

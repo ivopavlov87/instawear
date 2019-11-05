@@ -14,7 +14,7 @@ export const selectUserPosts = (state, ownProps) => {
         });
     }
     // debugger
-    return posts;
+    return posts.reverse();
     
     // if (Object.keys(state.entities.posts).length > 0) {
     //     debugger

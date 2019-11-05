@@ -47,7 +47,7 @@ class FollowBar extends React.Component {
         if (this.props.followedByCurrentUser) {
             return (
                 <button
-                    className="profile-header-btn unfollow-btn"
+                    className="profile-header-btn" id="unfollow-btn"
                     onClick={this.unfollow}>
                     <i className="following-icon"></i>
                     Following
@@ -56,7 +56,7 @@ class FollowBar extends React.Component {
         } else {
             return (
                 <button
-                    className="profile-header-btn follow-btn"
+                    className="profile-header-btn" id="follow-btn"
                     onClick={this.follow}>
                     <i className="follow-icon"></i>
                     Follow

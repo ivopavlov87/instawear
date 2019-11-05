@@ -28,6 +28,7 @@
     border-radius: 50%;
     object-fit: cover;
     margin: 0 30px;
+    border: 1px solid #dbdbdb;
 }
 
 .profile-posts {
@@ -205,4 +206,41 @@
 
 .profile-menu p {
     margin-right: 40px;
+}
+
+.profile-bio p {
+    // margin-top: 5px;
+    line-height: 24px;
+}
+
+.profile-bio a {
+    text-decoration: none;
+    color: #003569;
+}
+
+// #avatar-upload-label {
+//     background-image: url("/images/plus.png");
+//     height: 20px;
+//     width: 20px;
+//     background-repeat: no-repeat;
+// }
+
+.user-photo {
+    position: relative;
+}
+
+#avatar-upload-icon {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 70%;
+    left: 65%;
+    border-radius: 50%;
+    border: 3px solid #fafafa;
+    z-index: 4;
+    background-color: #fafafa;
+}
+
+#avatar-upload-icon:hover {
+    cursor: pointer;
 }
