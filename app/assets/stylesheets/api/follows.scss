@@ -2,12 +2,129 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#follow-btn {
+.profile-header-btn {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+    // padding: 5px 9px;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    background-color: #fafafa;
+    // margin-top: 5px;
+    // width: 90px;
+    padding: 6px 24px;
+}
+
+.profile-header-btn:hover {
+    cursor: pointer;
+}
+
+.follow-btn {
     background-color: #3897f0;
     color: white;
     font-weight: 600;
 }
 
-#unfollow-btn {
+.unfollow-btn {
     color: rgb(13, 13, 54);
 }
+
+.sgs-popup-frame {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    margin-left: -190px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    z-index: 10;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 1;
+    // margin: 20px;
+    max-height: calc(100% - 40px);
+}
+
+.unfollow-sgs-red {
+    // color: #ed4956;
+    font-weight: 600;
+    // margin: 16px 32px;
+    // text-align: center;
+    // height: 35px;
+    border-bottom: 1px solid #ebebeb;
+    width: 100%;
+    text-align: center;
+}
+
+.unfollow-sgs-red:hover {
+    cursor: pointer;
+}
+
+.unfollow-sgs-img {
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+}
+
+.unfollow-sgs-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #ebebeb;
+    width: 100%;
+}
+
+.unfollow-sgs-user p {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.unfollow-sgs-div {
+    // height: 20px;
+    // border-bottom: 1px solid #ebebeb;
+    width: 100%;
+    text-align: center;
+}
+
+.unfollow-sgs-div:hover {
+    cursor: pointer;
+}
+
+.unfollow-sgs-avatar-wrapper {
+    // margin: 16px;
+    margin-top: 32px;
+}
+
+// .sgs-popup-frame p {
+//     margin: 16px 32px;
+//     text-align: center;
+//     font-size: 14px;
+// }
+
+#sgs-popup-username-p {
+    margin: 16px 32px;
+    text-align: center;
+    font-size: 14px;
+    color: black;
+}
+
+#sgs-popup-unfollow-p {
+    margin: 16px 32px;
+    text-align: center;
+    font-size: 14px;
+    color: #ed4956;
+}
+
+#sgs-popup-cancel-p {
+    margin: 16px 32px;
+    text-align: center;
+    font-size: 14px;
+    color: black;
+}
+
+// .sgs-popup-frame p {
+//     margin-bottom: 5px;
+// }

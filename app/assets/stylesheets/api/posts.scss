@@ -31,7 +31,7 @@
     border-bottom: 1px solid #ebebeb;
 }
 
-.post-item-header img {
+.post-item-header-img {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -46,7 +46,7 @@
     align-items: center;
 }
 
-.post-item-info div {
+.post-index-item-follow-bar {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -175,4 +175,11 @@
 
 #popup-cancel{
     border: none;
+}
+
+.post-index-item-follow-bar-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
 }

@@ -99,7 +99,8 @@ class ProfileHeader extends React.Component {
         let followBtn = user.id !== this.props.currentUserId ? (<div>
             {/* <FollowBarContainer user={this.props.user} /> */}
             {/* <button className="profile-header-btn follow-btn">Follow</button> */}
-            <FollowBarContainer user={user} followedByCurrentUser={user.followedByCurrentUser}/>
+            {/* <FollowBarContainer user={user} followedByCurrentUser={user.followedByCurrentUser}/> */}
+            <FollowBarContainer user={user} userId={user.id} />
             </div>) : <></>;
 
         let editProfileBtn = user.id === this.props.currentUserId ? (<div>
@@ -119,19 +120,19 @@ class ProfileHeader extends React.Component {
                     {this.updateAvatar()}
                 </div>
                 <div className="user-main">
-                    <div className="user-info">
+                    <div className="user-info user-main-div">
                         <h2 className="profile-username">
                             {user.username}
                         </h2>
                         {followBtn}
                         {editProfileBtn}
                     </div>
-                    <div className="profile-menu">
+                    <div className="profile-menu user-main-div">
                         <p><strong>{user.postIds.length}</strong> posts</p>
                         {followerCount}
                         <p><strong>{user.followingCount}</strong> following</p>
                     </div>
-                    <div className="profile-bio">
+                    <div className="profile-bio user-main-div">
                         <p><strong>{user.name}</strong></p>
                         <p>{user.bio}</p>
                         <p><a href={`https://${user.website}`}><strong>{user.website}</strong></a></p>

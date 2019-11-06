@@ -25,8 +25,7 @@ class Api::FollowsController < ApplicationController
     # .where(following_id: params[:id])[0]
     @follow = Follow.find_by(follower_id: current_user.id, following_id: params[:id])
 
-    if @follow
-      @follow.destroy!
+    if @follow && @follow.destroy!
       render :show
     else
       render json: @follow.errors.full_messages, status: 422

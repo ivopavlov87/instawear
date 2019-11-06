@@ -111,7 +111,9 @@ class PostIndex extends React.Component {
                             key={idx}
                             post={post}
                             user={user}
+                            userId={user.id}
                             changeSelected={this.changeSelected}
+                            currentUser={this.props.currentUser}
                         />
                     </figure>
                 )

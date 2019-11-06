@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import LikeBar from '../likes_bar/like_bar_container';
 import CommentIndexContainer from '../comments/comment_index_container';
 import CreateCommentFormContainer from '../comments/create_comment_form_container';
+import FollowBarContainer from '../follow-bar/follow_bar_container';
 
 class PostIndexItem extends React.Component {
     constructor(props) {
@@ -14,8 +15,15 @@ class PostIndexItem extends React.Component {
     }
 
     render() {
-        let { user, post } = this.props;
+        let { user, post, currentUser } = this.props;
         let captionDiv;
+        let followBtn = currentUser.id !== user.id ? (
+            <div className="post-show-follow-bar-div">
+                <div className="dot-separator"></div>
+                {/* <FollowBarContainer user={user} followedByCurrentUser={user.followedByCurrentUser} /> */}
+                <FollowBarContainer user={user} userId={user.id} />
+            </div>
+        ) : <></>
 
         if (!post.caption) {
             captionDiv = <div className="post-caption"></div>
@@ -43,16 +51,22 @@ class PostIndexItem extends React.Component {
                 <div className="post-item-header">
                     <div className="post-item-info">
                         <Link to={`/user/${user.id}`}>
-                            <img src={user.profilePhoto} />
+                            <img className="post-item-header-img" src={user.profilePhoto} />
                         </Link>
-                        <div>
-                            <Link to={`/user/${user.id}`}>
+                        <div className="post-index-item-follow-bar">
+                            {/* <Link to={`/user/${user.id}`}>
                                 <p className="post-item-username">{user.username}</p>
-                            </Link>
+                            </Link> */}
+                            <div className="post-index-item-follow-bar-div">
+                                <Link to={`/user/${user.id}`}>
+                                    <p className="post-item-username">{user.username}</p>
+                                </Link>
+                                {followBtn}
+                            </div>
                             <p className="post-item-location">{post.location}</p>
                         </div>
                     </div>
-                    <img src="/images/ellipsis.png" alt="edit post" id="ellipsis-img"
+                    <img className="post-item-header-img" src="/images/ellipsis.png" alt="edit post" id="ellipsis-img"
                         onClick={() => this.props.changeSelected(post.id)}/>
                 </div>
                 <div className="post-img">

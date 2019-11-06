@@ -25,7 +25,7 @@ const likesReducer = (state = {}, action) => {
                 return state;
             } else {
                 return action.payload.likes;
-            } // now i know Andy    
+            }  
         case RECEIVE_POST:
             return Object.assign({}, state, action.payload.likes);
         case RECEIVE_USER:
