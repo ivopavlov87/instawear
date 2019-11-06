@@ -44,21 +44,21 @@ const usersReducer = (state = {}, action) => {
             newState[action.follow.following_id].followerCount += 1;
             newState[action.follow.follower_id].followingCount += 1;
             newState[action.follow.following_id].followedByCurrentUser = true;
-            // remove from followings and followers 
-            // debugger
-            // newState[action.like.post_id].liker_ids.push(action.like.user_id);
-            // newState[action.like.post_id].like_ids.push(action.like.id);
+       
+            newState[action.follow.follower_id].followingIds.push(action.follow.following_id);
+            newState[action.follow.following_id].followerIds.push(action.follow.follower_id);
             return newState;
         case REMOVE_FOLLOW:
             newState[action.following_id].followerCount -= 1;
             newState[action.follower_id].followingCount -= 1;
             newState[action.following_id].followedByCurrentUser = false;
-            // same here
-            // debugger
-            // newState[action.like.post_id].liker_ids = newState[action.like.post_id].liker_ids
-            //     .filter(likerId => likerId != action.like.user_id);
-            // newState[action.like.post_id].like_ids = newState[action.like.post_id].like_ids
-            //     .filter(likeId => likeId != action.like.id); 
+
+            // remove the the id of the followee from the current user's following list 
+            newState[action.follower_id].followingIds = newState[action.follower_id].followingIds
+                .filter(followingId => followingId !== action.following_id);
+            // remove the current user id from the followers list of the followee
+            newState[action.following_id].followerIds = newState[action.following_id].followerIds
+                .filter(followerId => followerId !== action.follower_id);
             return newState;     
         default:
             return state;
