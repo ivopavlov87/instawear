@@ -50,3 +50,43 @@ export const selectPostComments = (state, ownProps) => ownProps.post.comment_ids
 //     debugger
 //     return followers;
 // }   
+
+export const selectFolloweesPosts = (state, followees) => {
+    // let followees = selectFollowees(state);
+    let posts = state.entities.posts;
+    // let followeesIds = Object.keys(followees);
+    let followeesIds = [];
+    let followeesPosts = {};
+
+    // if (followees) {
+        for (let followee in followees) {
+            followeesIds.push(followees[followee].id);
+        }
+    // }
+
+    // if (posts) {
+        for (let post in posts) {
+            if (followeesIds.includes(posts[post].user_id)) {
+                followeesPosts[post] = posts[post];
+            }
+        };
+    // }
+
+    return followeesPosts;
+}
+
+export const selectFollowees = state => {
+    let users = state.entities.users;
+    let currentUserId = state.session.id;
+    let followees = {};
+
+    // if (users) {
+        for (let user in users) {
+            if (users[user].followerIds.includes(currentUserId) || users[user].id === currentUserId) {
+                followees[user] = users[user];
+            }
+        };
+    // }
+
+    return followees;
+}

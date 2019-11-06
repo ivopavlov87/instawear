@@ -95,6 +95,7 @@ class PostIndex extends React.Component {
 
     renderPosts() {
         const posts = Object.values(this.props.posts);
+        // const users = Object.values(this.props.users);
 
         if (posts.length === 0) {
             return (
