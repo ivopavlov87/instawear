@@ -6,6 +6,7 @@ import LikeBar from '../likes_bar/like_bar_container'
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import { formatCreatedAt, reformatCreatedAt } from "../../util/date_util";
 import EditPostForm from '../post_form/edit_post_form';
+import FollowBarContainer from '../follow-bar/follow_bar_container';
 
 
 class PostShow extends React.Component {
@@ -105,7 +106,6 @@ class PostShow extends React.Component {
     }
 
     render() {
-        let { user, post } = this.props;
         // let captionDiv;
 
         // if (!post.caption) {
@@ -141,6 +141,13 @@ class PostShow extends React.Component {
                     <div>Page is not available</div>
                 );
             } else {
+                let { user, post, currentUserId } = this.props;
+                let followBtn = currentUserId !== user.id ? (
+                    <div className="post-show-follow-bar-div"> 
+                        <div className="dot-separator"></div>
+                        <FollowBarContainer user={user} userId={user.id} />
+                    </div>
+                ) : <></>
                 return (
                     <div className="post-show-main">
                         <NavBarContainer />
@@ -156,16 +163,19 @@ class PostShow extends React.Component {
                                     <div className="post-show-header">
                                         <div className="post-author-info">
                                             <Link to={`/user/${user.id}`}>
-                                                <img src={user.profilePhoto} alt={user.username} />
+                                                <img className="post-show-header-img" src={user.profilePhoto} alt={user.username} />
                                             </Link>
                                             <div>
-                                                <Link to={`/user/${user.id}`}>
-                                                    <strong>{user.username}</strong>
-                                                </Link>
-                                                <p>{post.location}</p>
+                                                <div className="post-show-follow-bar">
+                                                    <Link to={`/user/${user.id}`}>
+                                                        <strong>{user.username}</strong>
+                                                    </Link>
+                                                    {followBtn}
+                                                </div>
+                                                <p className ="post-author-info-p">{post.location}</p>
                                             </div>
                                         </div>
-                                        <img src="/images/ellipsis.png" alt="edit post" id="ellipsis-img"
+                                        <img className="post-show-header-img" src="/images/ellipsis.png" alt="edit post" id="ellipsis-img"
                                             onClick={() => {this.changeSelected(this.props.post.id)}}
                                         />
                                     </div>

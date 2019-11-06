@@ -7,12 +7,11 @@ import PostShow from './post_show';
 const mapStateToProps = (state, ownProps) => {
     let post = selectPost(state, ownProps);
     let user = post ? state.entities.users[post.user_id] : undefined; 
-
-    return{
+    return {
         currentUserId: state.session.id,
         post,
         user
-};
+    };
 }
 
 const mapDispatchToProps = dispatch => ({

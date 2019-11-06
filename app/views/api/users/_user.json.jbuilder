@@ -19,3 +19,5 @@ json.followingCount user.following.length
 
 json.followedByCurrentUser user.followers.include?(current_user)
 
+
+

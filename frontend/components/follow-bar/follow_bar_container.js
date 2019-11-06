@@ -9,10 +9,10 @@ import {
     deleteFollow
 } from '../../actions/follow_actions';
 
-
 const mapStateToProps = (state, ownProps) => ({
     // followers: selectUserFollowers(state, ownProps),
-    // followedByCurrentUser: selectUserFollowers(state, ownProps).includes(state.session.id), // indicates wheather or not the current user follows the user comming from the wield card
+    followedByCurrentUser: ownProps.userId === undefined ? undefined : state.entities.users[ownProps.userId].followedByCurrentUser,
+    // selectUserFollowers(state, ownProps).includes(state.session.id), // indicates wheather or not the current user follows the user comming from the wield card
     currentUserId: state.session.id,
 });
 
