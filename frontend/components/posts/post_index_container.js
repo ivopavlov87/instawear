@@ -15,6 +15,8 @@ const mapStateToProps = state => {
     return {
         users: followees,
         posts: followeesPosts,
+        // users,
+        // posts,
         currentUser
     };
 };

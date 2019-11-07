@@ -1,0 +1,142 @@
+.search-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dbdbdb;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+.searched-user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.search-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 14px;
+    background: white;
+    height: 50px;
+    // width: 100%;
+    border-bottom: solid 1px #efefef;
+}
+
+.search-item:last-child {
+    border-bottom: none; 
+}
+
+.search-item:hover {
+    background: #fafafa;
+    cursor: pointer;
+}
+
+.search-users {
+    max-height: 362px;
+    overflow: scroll;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: solid 1px #e6e6e6;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0,0,0,.0975);
+    width: 243px;
+    margin-top: 20px;
+    z-index: 9;
+    margin-top: 35px;
+    left: -18px;
+}
+
+.search-no-item {
+    color: #999;
+    font-size: 14px;
+    padding: 15px;
+    text-align: center;
+    background-color: white;
+}
+
+.empty-search-query {
+    border: none;
+}
+
+.search-screen {
+    background: transparent;
+}
+
+.search-container-input {
+    padding: 3px 5px 3px 10px;
+    border: none;
+    font-size: 14px;
+}
+
+.search-icon {
+    color: #999999;
+    padding: 3px;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.cancel-icon {
+    padding: 3px;
+    height: 15px;
+    width: 15px;
+}
+
+.cancel-icon:hover {
+    cursor: pointer;
+}
+
+.search-container-input :focus {
+    outline: none; 
+}
+
+.triangle {
+    background: #fff;
+    border: solid 1px #e6e6e6;
+    box-shadow: 0 0 5px 1px rgba(0,0,0,.0975);
+    height: 14px;
+    left: 0;
+    margin: auto;
+    right: 0;
+    // top: 12px;
+    transform: rotate(45deg);
+    width: 14px;
+    z-index: 1;
+    position: absolute;
+    top: 41px;
+}
+
+.triangle:after{
+    content: ' ';
+    position: absolute;
+    border-color: transparent transparent #fff;
+    border-style: solid;
+    border-width: 0 10px 10px;
+    height: 0;
+    left: 110px;
+    top: -10px;
+    width: 0;
+    z-index: 3;
+}
+
+.searched-name {
+    line-height: 22px;
+    margin-bottom: -4px;
+    overflow: hidden;
+    font-weight: 600;
+    text-overflow: ellipsis;
+}
+
+.searched-username {
+    font-weight: 300;
+    line-height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #999;
+}
