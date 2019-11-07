@@ -1,43 +1,34 @@
-# instawear
+# Instawear
 [Live Demo](https://instawear.herokuapp.com/)
-#### A single-page Instagram clone where users can share, comment, and like posts.
-
-
-## Background and Overview
-## Functionality and MVP
-- [ ] User Authentication
-- [ ] Posting CRUD
-- [ ] Comments
-- [ ] Likes
-- [ ] User Search
-- [ ] User Profile Edit
-- [ ] Splash Page
-- [ ] Bonus: Follow/Unfollow
-- [ ] Bonus: Hashtags
-
+Instawear is a single-page application inspired by Instagram. In Instwear, users can share, comment, and like posts, as well as follow other users. It has been created for fashionistas to share their passion for fashion style.
+![](/public/images/splash.png)
 
 ## Technologies and Technical Challenges
-	Ruby on Rails
-	PostgreSQL
-    Redux
-    AWS S3
+- [ ] Ruby on Rails
+- [ ] PostgreSQL
+- [ ] Redux
+- [ ] React 
+- [ ] JavaScript
+- [ ] AWS S3
 
-### Day 1 - 3
-* Proposal
-* User authentication
-* Splash
-* Active storage setup
-* AWS S3 setup
-* Add/delete post
-
-
-### Day 4 - 5
-* Likes 
+## Current Features
+* User Authentication
+* Post CRUD Feature
 * Comments
+* Likes
+* Follows
+* User Search
+* Profile Edit
+* AWS S3 Image Uploading
 
-### Day 6 - 7
-* User search
-* Profile editing
+
+## Code Snippets
+
+
+## Future Features 
+* Saved Posts
+* Post Sharing 
+* Hashtags
 
 
 
