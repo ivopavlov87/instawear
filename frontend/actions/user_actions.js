@@ -4,6 +4,7 @@ import { platform } from 'os';
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_USERS = 'RECEIVE_USERS';
+export const RECEIVE_SEARCH_USERS = 'RECEIVE_SEARCH_USERS';
 
 const receiveUser = payload => ({
     type: RECEIVE_USER,
@@ -12,6 +13,11 @@ const receiveUser = payload => ({
 
 const receiveUsers = payload => ({
     type: RECEIVE_USERS,
+    payload
+});
+
+const receiveSearchUsers = payload => ({
+    type: RECEIVE_SEARCH_USERS,
     payload
 });
 
@@ -50,6 +56,6 @@ export const updateUserPhoto = (user) => (dispatch) => {
 
 export const searchUsers = username => dispatch => {
     return UserAPIUtil.searchUsers(username)
-        .then(payload => dispatch(receiveUsers(payload)));
+        .then(payload => dispatch(receiveSearchUsers(payload)));
 }; 
 

@@ -1,7 +1,7 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 
 import {
-    RECEIVE_USERS,
+    // RECEIVE_USERS,
     RECEIVE_USER
 } from "../actions/user_actions";
 
@@ -24,8 +24,8 @@ const usersReducer = (state = {}, action) => {
         case RECEIVE_USER:
             // debugger
             return Object.assign({}, state, action.payload.user); // check if this might be an issue 
-        case RECEIVE_USERS:
-            return action.payload.users;     
+        // case RECEIVE_USERS:
+        //     return action.payload.users;     
         case RECEIVE_CURRENT_USER:
             return Object.assign({}, state, { [action.payload.user.id]: action.payload.user });
         case RECEIVE_POST:

@@ -90,3 +90,31 @@ export const selectFollowees = state => {
 
     return followees;
 }
+
+export const selectCurrentUserFollowers = state => {
+    let users = state.entities.users;
+    let currentUserId = state.session.id;
+    let followers = {};
+
+    for (let user in users) {
+        if (users[user].followerIds.includes(currentUserId)) {
+            followers[user] = users[user];
+        }
+    };
+
+    return followers;
+}
+
+export const selectCurrentUserFollowing = state => {
+    let users = state.entities.users;
+    let currentUserId = state.session.id;
+    let following = {};
+
+    for (let user in users) {
+        if (users[user].followingIds.includes(currentUserId)) {
+            following[user] = users[user];
+        }
+    };
+
+    return following;
+}
