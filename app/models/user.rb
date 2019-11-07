@@ -31,18 +31,22 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source: :post 
 
   has_many :all_following_relations,
-    foreign_key: :follower_id,
-    class_name: :Follow,
-    dependent: :destroy
+  foreign_key: :follower_id,
+  class_name: :Follow,
+  dependent: :destroy
 
-  has_many :following, through: :all_following_relations, source: :following  
+  has_many :following, 
+  through: :all_following_relations, 
+  source: :following  
 
   has_many :all_follower_relations,
-    foreign_key: :following_id,
-    class_name: :Follow,
-    dependent: :destroy
+  foreign_key: :following_id,
+  class_name: :Follow,
+  dependent: :destroy
 
-  has_many :followers, through: :all_follower_relations, source: :follower 
+  has_many :followers, 
+  through: :all_follower_relations, 
+  source: :follower 
 
   has_one_attached :profile_photo, dependent: :destroy
 
