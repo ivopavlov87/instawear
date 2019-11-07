@@ -27,6 +27,10 @@
     "lib": "lib",
     "test": "test"
   },
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.11.1"
+  },
   "scripts": {
     "postinstall": "webpack",
     "start": "webpack --watch --mode=development",
