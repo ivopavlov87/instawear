@@ -96,6 +96,8 @@ class ProfileHeader extends React.Component {
 
     render() {
         let { user } = this.props; 
+        if (!user) return <div></div>
+        // debugger
         let followBtn = user.id !== this.props.currentUserId ? (<div>
             {/* <FollowBarContainer user={this.props.user} /> */}
             {/* <button className="profile-header-btn follow-btn">Follow</button> */}
