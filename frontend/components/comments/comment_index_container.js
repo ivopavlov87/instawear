@@ -7,7 +7,7 @@ import { selectPostComments } from '../../reducers/selectors';
 const mapStateToProps = (state, ownProps) => { 
     let comments = selectPostComments(state, ownProps)
     return {
-    comments ,
+    comments,
 };
 }
 const mapDistpatchToProps = dispatch => ({

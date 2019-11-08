@@ -42,12 +42,13 @@ class CommentIndex extends React.Component {
                 {viewAllComments}
                 <div className="comments-wrap">
                     {
-                        slicedComments.map((comment, idx) =>
-                            <CommentIndexItemContainer
+                        slicedComments.map((comment, idx) => {
+                            return <CommentIndexItemContainer
                                 key={idx}
                                 comment={comment}
-                                deleteComment={deleteComment} 
-                            />)
+                                deleteComment={deleteComment}
+                            />
+                        }) 
                     }
                 </div>
                 {this.renderLatestCommentDate()}
