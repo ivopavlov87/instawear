@@ -1,4 +1,9 @@
 class Api::FollowsController < ApplicationController
+  def index 
+    @follows = Follow.all
+    render :index
+  end
+  
   def show
     @follow = Follow.find_by(id: params[:id])
     if @follow

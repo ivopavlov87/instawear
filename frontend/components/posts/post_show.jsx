@@ -23,15 +23,39 @@ class PostShow extends React.Component {
     }
 
     componentDidMount() {
+        // debugger
         this.props.fetchPost(this.props.match.params.id)
             .then(() => this.setState({ loading: false }));
     }
 
     componentDidUpdate(prevProps) {
+        if (this.props.post === undefined) {
+            debugger
+            this.props.fetchPost(this.props.match.params.id)
+                .then(() => this.setState({ loading: false }));
+        }
         if (prevProps.match.params.id !== this.props.match.params.id) {
             this.props.fetchPost(this.props.match.params.id);
-        } 
+        }
     }
+
+    // componentDidMount() {
+        // if (this.props.post === undefined) { 
+            // this.props.fetchPost(this.props.match.params.id)
+            //     .then(() => this.setState({ loading: false }));
+        // }
+    // }
+
+    // componentDidUpdate(prevProps) {
+        // if (this.props.post === undefined) {
+        //     this.props.fetchPost(this.props.match.params.id)
+        //         .then(() => this.setState({ loading: false }));
+        // }
+    //     if (prevProps.match.params.id !== this.props.match.params.id) {
+    //         this.props.fetchPost(this.props.match.params.id)
+    //             .then(() => this.setState({ loading: false }));
+    //     } 
+    // }
 
     renderPopUp() {
         let { currentUserId, user } = this.props;
@@ -137,6 +161,7 @@ class PostShow extends React.Component {
             );
         } else {
             if (this.props.post === undefined) {
+                // debugger
                 return (
                     <div>Page is not available</div>
                 );
@@ -145,7 +170,7 @@ class PostShow extends React.Component {
                 let followBtn = currentUserId !== user.id ? (
                     <div className="post-show-follow-bar-div"> 
                         <div className="dot-separator"></div>
-                        <FollowBarContainer user={user} userId={user.id} />
+                        <FollowBarContainer user={user} />
                     </div>
                 ) : <></>
                 return (
@@ -198,7 +223,7 @@ class PostShow extends React.Component {
                                         </div>
                                     
                                         <div className="post-comments">
-                                            <CommentIndexContainer post={post} />
+                                            <CommentIndexContainer post={this.props.post} />
                                         </div>
                                     </div>
 

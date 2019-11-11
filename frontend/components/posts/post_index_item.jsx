@@ -21,7 +21,7 @@ class PostIndexItem extends React.Component {
             <div className="post-show-follow-bar-div">
                 <div className="dot-separator"></div>
                 {/* <FollowBarContainer user={user} followedByCurrentUser={user.followedByCurrentUser} /> */}
-                <FollowBarContainer user={user} userId={user.id} />
+                <FollowBarContainer user={user} />
             </div>
         ) : <></>
 

@@ -16,7 +16,10 @@ class FollowBar extends React.Component {
     }
 
     // componentDidMount() {
-    //     this.props.fetchUser(this.props.user);
+    //     if (this.props.user === undefined) {
+    //         this.fetchUser(this.props.user.id )
+    //     }
+        // this.props.fetchUsers();
     // }
 
     // componentDidUpdate() {

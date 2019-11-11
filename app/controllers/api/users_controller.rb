@@ -37,12 +37,13 @@ class Api::UsersController < ApplicationController
       render json: @user.errors.full_messages, status: 422
     end
   end
+
   def search 
     @users = User.search(params[:username])
     if @users.any? 
-        render :search, status: 200
+      render :search, status: 200
     else 
-        render json: {users: { none: false }}, status: 200
+      render json: {users: { none: false }}, status: 200
     end 
   end 
 

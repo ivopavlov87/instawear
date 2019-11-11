@@ -2,6 +2,7 @@ import { fetchAllPosts, removePost, createPost } from "../../actions/post_action
 import { connect } from "react-redux";
 import PostIndex from "./post_index";
 import { selectFolloweesPosts, selectFollowees } from "../../reducers/selectors";
+// import { fetchUsers } from "../../actions/user_actions";
 
 const mapStateToProps = state => {
     // will select all the posts from the current user and the users that the current user follows in the future, that future is now here lolz
@@ -23,6 +24,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     fetchAllPosts: () => dispatch(fetchAllPosts()),
+    // fetchUsers: () => dispatch(fetchUsers()),
     removePost: post => dispatch(removePost(post)),
     createPost: post => dispatch(createPost(post))
 });

@@ -6,7 +6,8 @@ import PostShow from './post_show';
 
 const mapStateToProps = (state, ownProps) => {
     let post = selectPost(state, ownProps);
-    let user = post ? state.entities.users[post.user_id] : undefined; 
+    // debugger
+    let user = post ? state.entities.users[post.user_id] : null; 
     return {
         currentUserId: state.session.id,
         post,
@@ -18,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
     fetchPost: id => dispatch(fetchPost(id)),
     removePost: post => dispatch(removePost(post)), 
     updatePost: post => dispatch(updatePost(post)),
-    fetchUser: id => dispatch(fetchUser(id)),
+    // fetchUser: id => dispatch(fetchUser(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostShow);

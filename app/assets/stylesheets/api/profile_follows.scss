@@ -1,0 +1,126 @@
+.follows-header {
+    // position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    height: 43px;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #dbdbdb;
+    border-radius: 12px 12px 0 0;
+}
+
+.profile-follows {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    margin-left: -190px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    z-index: 10;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 1;
+    // margin: 20px;
+    min-height: 100px;
+    max-height: 400px;
+}
+
+.profile-follow-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+}
+
+.profile-follow-avatar:hover {
+    cursor: pointer;
+}
+
+.profile-follow-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 14px;
+    background: white;
+    height: 50px;
+}
+
+.follows-list {
+    z-index: 10;
+    width: 100%;
+    min-height: 56px;
+    overflow-y: scroll;
+}
+
+.follows-title {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.profile-follow-item:last-child {
+    border-radius: 0 0 12px 12px;
+}
+
+.profile-follow-item {
+    padding-bottom: 8px;
+    padding-top: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.follow-name-info {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    // margin-left: 25px;
+}
+
+.follow-username {
+    color: #262626;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 5px;
+    margin-left: -5px;
+}
+
+.follow-username:hover {
+    cursor: pointer;
+}
+
+.follow-name {
+    font-size: 14px;
+    line-height: 18px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #999;
+}
+
+.profile-follow-item-btn p {
+    padding: 5px 9px;
+}
+
+.profile-follow-item-btn:hover {
+    cursor: pointer;
+}
+
+.show-follows:hover {
+    cursor: pointer;
+}
