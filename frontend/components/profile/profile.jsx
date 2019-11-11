@@ -13,11 +13,13 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
+        // this.props.fetchUsers();
         this.props.fetchUser(this.props.match.params.id)
             .then(() => this.setState({loading: false}));
     }
 
     componentDidUpdate(prevProps) {
+        // this.props.fetchUsers();
         if (this.props.user === undefined) {
             this.props.fetchUser(this.props.match.params.id)
                 .then(() => this.setState({ loading: false }));
@@ -64,6 +66,8 @@ class Profile extends React.Component {
                             currentUserId={this.props.currentUserId}
                             errors={this.props.errors}
                             clearErrors={this.props.clearErrors}
+                            followers={this.props.followers}
+                            following={this.props.following}
                         />
                         {/* <FollowBarContainer user={user} /> */}
                         <ProfilePosts user={user} posts={posts} />

@@ -41,6 +41,7 @@ const usersReducer = (state = {}, action) => {
         case RECEIVE_ALL_POSTS:
             return Object.assign({}, state, action.payload.users);   
         case RECEIVE_FOLLOW:
+            debugger
             newState[action.follow.following_id].followerCount += 1;
             newState[action.follow.follower_id].followingCount += 1;
             newState[action.follow.following_id].followedByCurrentUser = true;
@@ -49,6 +50,7 @@ const usersReducer = (state = {}, action) => {
             newState[action.follow.following_id].followerIds.push(action.follow.follower_id);
             return newState;
         case REMOVE_FOLLOW:
+            debugger
             newState[action.following_id].followerCount -= 1;
             newState[action.follower_id].followingCount -= 1;
             newState[action.following_id].followedByCurrentUser = false;

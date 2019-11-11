@@ -2,6 +2,9 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import FollowBarContainer from '../follow-bar/follow_bar_container';
 import ProfileEditForm from './profile_edit';
+// import FollowItem from "./follow_item_container";
+import ProfileFollowers from "./profile_followers_container";
+import ProfileFollowing from "./profile_following_container";
 
 
 class ProfileHeader extends React.Component {
@@ -21,12 +24,18 @@ class ProfileHeader extends React.Component {
             // profilePhoto: user.profilePhoto,
             photoFile: null,
             editing: false,
+            renderFollowers: false,
+            renderFollowing: false
         };
 
         this.handleAvatar = this.handleAvatar.bind(this);
         this.updateAvatar = this.updateAvatar.bind(this);
         this.renderEditForm = this.renderEditForm.bind(this);
         this.changeEditing = this.changeEditing.bind(this);
+        this.renderFollowers = this.renderFollowers.bind(this);
+        this.renderFollowing = this.renderFollowing.bind(this);
+        this.showFollowers = this.showFollowers.bind(this);
+        this.showFollowing = this.showFollowing.bind(this);
     }
 
     handleAvatar(e) {
@@ -40,6 +49,107 @@ class ProfileHeader extends React.Component {
                 formData,
                 id: this.props.user.id
             });
+        });
+    }
+
+    renderFollowers() {
+        let followers = Object.values(this.props.followers);
+        // debugger
+        return (
+            this.state.renderFollowers === false ? <></> : (
+                followers.length === 0 ? (
+                    <div className="profile-follows followers">
+                        <div className="follows-header">
+                            <p className="follows-title">Followers</p >
+                            <div className="close" onClick={() => this.showFollowers(false)}></div>
+                        </div>
+                        <div className="follows-list">
+                            <div className="profile-follow-item">
+                                <p>No foll</p>
+                            </div>
+                        </div>
+                        <div className="screen"
+                            onClick={() => this.showFollowers(false)}>
+                        </div>
+                    </div>
+                ) : (
+                    // <div className = "profile-follows followers">
+                    //     <div className = "follows-header">
+                    //         <p className = "follows-title">Followers</p >
+                    //         <div className="close" onClick={() => this.showFollowers(false)}></div>
+                    //     </div>
+                    //     <div className="follows-list">
+                    //         {followers.map((follower, idx) => {
+                    //             return <FollowItem
+                    //                 user={follower}
+                    //                 key={`user-follower-${idx}`}
+                    //                 closeForm={this.showFollowers}
+                    //             />
+                    //         })}
+                    //     </div>
+                    //     <div className="screen"
+                    //         onClick={() => this.showFollowers(false)}>
+                    //     </div>
+                    // </div >
+                        <ProfileFollowers followers={followers} showFollowers={this.showFollowers}/>
+                )   
+            )
+        );
+    }
+
+    renderFollowing() {
+        let following = Object.values(this.props.following);
+        return (
+            this.state.renderFollowing === false ? <></> : (
+                following.length === 0 ? (
+                    <div className="profile-follows following">
+                        <div className="follows-header">
+                            <p className="follows-title">Following</p >
+                            <div className="close" onClick={() => this.showFollowing(false)}></div>
+                        </div >
+                        <div className="follows-list">
+                            <div className="profile-follow-item">
+                                <p>No foll</p>
+                            </div>
+                        </div>
+                        <div className="screen"
+                            onClick={() => this.showFollowing(false)}>
+                        </div>
+                    </div>
+                ) : (
+                    // <div className="profile-follows following">
+                    //     <div className="follows-header">
+                    //         <p className="follows-title">Following</p>
+                    //         <div className="close" onClick={() => this.showFollowing(false)}></div>
+                    //     </div>
+                    //     <div className="follows-list">
+                    //         {following.map((fwing, idx) => {
+                    //             return <FollowItem
+                    //                 user={fwing}
+                    //                 key={`user-following-${idx}`}
+                    //                 closeForm={this.showFollowing}
+                    //             />
+                    //         })}
+                    //     </div>
+                    //     <div className="screen"
+                    //         onClick={() => this.showFollowing(false)}>
+                    //     </div>
+                    // </div>
+                        <ProfileFollowing following={following} showFollowing={this.showFollowing} />
+                )
+            )
+        );
+    }
+
+    showFollowers(bool) {
+        this.setState({
+            renderFollowers: bool
+        });
+    }
+
+    showFollowing(bool) {
+        this.setState({
+            renderFollowing: bool
         });
     }
 
@@ -96,25 +206,27 @@ class ProfileHeader extends React.Component {
 
     render() {
         let { user } = this.props; 
-        if (!user) return <div></div>
+        if (user === undefined) return <div></div>
         // debugger
         let followBtn = user.id !== this.props.currentUserId ? (<div>
-            {/* <FollowBarContainer user={this.props.user} /> */}
-            {/* <button className="profile-header-btn follow-btn">Follow</button> */}
-            {/* <FollowBarContainer user={user} followedByCurrentUser={user.followedByCurrentUser}/> */}
-            <FollowBarContainer user={user} userId={user.id} />
-            </div>) : <></>;
+                <FollowBarContainer user={user} />
+            </div>
+            ) : (<div id="fake-follow">
+                {/* <FollowBarContainer user={user} /> */}
+            </div>);
 
         let editProfileBtn = user.id === this.props.currentUserId ? (<div>
-                <button onClick={() => { this.changeEditing(true) }} 
-                    className="profile-header-btn edit-profile-btn">
-                    Edit Profile
-                </button>
-                {/* pass the user and updateUser and errors*/}
-            </div>) : <></>;
+            <button onClick={() => { this.changeEditing(true) }} 
+                className="profile-header-btn edit-profile-btn">
+                Edit Profile
+            </button>
+            {/* doing this to fetch all users for follows from FollowBarContainer*/}
+            {/* <FollowBarContainer user={user} userId={user.id}/>  */}
+            {/* pass the user and updateUser and errors*/}
+        </div>) : <></>;
 
-        let followerCount = user.followerCount === 0 ? <p><strong>{user.followerCount}</strong> follower</p> :
-            <p><strong>{user.followerCount}</strong> followers</p>
+        let followerCount = user.followerCount === 0 ? <p className="show-follows" onClick={() => { this.showFollowers(true)}}><strong>{user.followerCount}</strong> follower</p> :
+            <p className="show-follows"  onClick={() => { this.showFollowers(true)}}><strong>{user.followerCount}</strong> followers</p>
 
         return (
             <header className="profile-header-section">
@@ -132,7 +244,7 @@ class ProfileHeader extends React.Component {
                     <div className="profile-menu user-main-div">
                         <p><strong>{user.postIds.length}</strong> posts</p>
                         {followerCount}
-                        <p><strong>{user.followingCount}</strong> following</p>
+                        <p className="show-follows" onClick={() => { this.showFollowing(true) }}><strong>{user.followingCount}</strong> following</p>
                     </div>
                     <div className="profile-bio user-main-div">
                         <p><strong>{user.name}</strong></p>
@@ -144,6 +256,8 @@ class ProfileHeader extends React.Component {
                     <ProfileTabs user={this.props.user} />
                 </div> */}
                 {this.renderEditForm()}
+                {this.renderFollowers()}
+                {this.renderFollowing()}
             </header>
         );
     }

@@ -1,7 +1,14 @@
-export const fetchFollow = id => {
+export const fetchFollow = follow => {
     return $.ajax({
         method: 'GET',
-        url: `/api/follows/${id}`
+        url: `/api/follows/${follow.id}`
+    });
+};
+
+export const fetchFollows = () => {
+    return $.ajax({
+        method: 'GET',
+        url: '/api/follows/'
     });
 };
 

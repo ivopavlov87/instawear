@@ -1,5 +1,4 @@
 import * as UserAPIUtil from '../util/user_api_util';
-import { platform } from 'os';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";

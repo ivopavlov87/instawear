@@ -37,6 +37,7 @@ class CommentIndex extends React.Component {
             slicedComments = comments;
         }
 
+        // debugger
         return (
             <div className="comments-container">
                 {viewAllComments}
