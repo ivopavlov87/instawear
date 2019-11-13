@@ -36,6 +36,13 @@ class EditPostForm extends React.Component {
         // let post = this.state;
         // this.props.action(formData)
         //     .then(() => this.closeForm());
+        let button = e.target;
+        let parent = button.parentElement;
+        let loading = document.createElement('p');
+        loading.innerText = 'Updating...';
+        loading.classList.add('loader-btn');
+        parent.removeChild(button);
+        parent.appendChild(loading); 
         this.props.action(this.state)
             .then(() => {
                 this.props.closeForm(false);

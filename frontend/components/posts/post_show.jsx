@@ -12,7 +12,7 @@ import FollowBarContainer from '../follow-bar/follow_bar_container';
 class PostShow extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { loading: true, selected: null, editing: false, expand: false };
+        this.state = { loading: true, selected: null, deleting:false, editing: false, expand: false };
 
         this.goToPreviousURL = this.goToPreviousURL.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
@@ -20,6 +20,8 @@ class PostShow extends React.Component {
         this.changeSelected = this.changeSelected.bind(this);
         this.changeEditing = this.changeEditing.bind(this);
         this.renderEditForm = this.renderEditForm.bind(this);
+        this.askDeleteQuestion = this.askDeleteQuestion.bind(this);
+        this.changeDeleting = this.changeDeleting.bind(this);
     }
 
     componentDidMount() {
@@ -30,7 +32,7 @@ class PostShow extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.post === undefined) {
-            debugger
+            // debugger
             this.props.fetchPost(this.props.match.params.id)
                 .then(() => this.setState({ loading: false }));
         }
@@ -62,7 +64,7 @@ class PostShow extends React.Component {
         let popUpWindow = currentUserId === user.id ? (
             <div>
                 <div className="popup-frame">
-                    <div onClick={this.handleDelete}>
+                    <div onClick={() => { this.changeSelected(null); this.changeDeleting(true); }}>
                         <p>Delete Post</p>
                     </div>
                     <div onClick={() => {this.changeSelected(null); this.changeEditing(true);}}>
@@ -116,8 +118,36 @@ class PostShow extends React.Component {
         let { removePost } = this.props;
         let post = this.props.post;
         removePost(post).then(() => { 
-            this.changeSelected(null); this.goToPreviousURL();
+            this.changeDeleting(false); this.goToPreviousURL();
         });
+    }
+
+    askDeleteQuestion() {
+        return this.state.deleting === false ? <></> : (
+            <div>
+                <div className="delete-q-main">
+                    <div className="delete-question">
+                        Delete Post?
+                    </div>
+                    <div className="delete-q-answers">
+                        <div className="delete-cancel" onClick={() => this.changeDeleting(false)}>
+                            Cancel
+                        </div>
+                        <div className="vertical-devider delete-devider"></div>
+                        <div className="delete-confirm" onClick={this.handleDelete}>
+                            Delete
+                        </div>
+                    </div>
+                </div>
+                <div className="screen"
+                    onClick={() => this.changeDeleting(false)}>
+                </div>
+            </div>
+        );
+    }
+
+    changeDeleting(bool) {
+        this.setState({ deleting: bool });
     }
 
     changeSelected(id) {
@@ -172,7 +202,16 @@ class PostShow extends React.Component {
                         <div className="dot-separator"></div>
                         <FollowBarContainer user={user} />
                     </div>
-                ) : <></>
+                ) : <></>;
+                let actionBtn = currentUserId === user.id ? (
+                    <img className="post-show-header-img" src="/images/ellipsis.png" alt="edit post" id="ellipsis-img"
+                        onClick={() => { this.changeSelected(this.props.post.id) }}
+                    />
+                ) : (
+                    <img src="/images/return.png" alt="go back" className="post-show-goback"
+                        onClick={this.goToPreviousURL}
+                    />
+                );
                 return (
                     <div className="post-show-main">
                         <NavBarContainer />
@@ -200,9 +239,10 @@ class PostShow extends React.Component {
                                                 <p className ="post-author-info-p">{post.location}</p>
                                             </div>
                                         </div>
-                                        <img className="post-show-header-img" src="/images/ellipsis.png" alt="edit post" id="ellipsis-img"
+                                        {/* <img className="post-show-header-img" src="/images/ellipsis.png" alt="edit post" id="ellipsis-img"
                                             onClick={() => {this.changeSelected(this.props.post.id)}}
-                                        />
+                                        /> */}
+                                        {actionBtn}
                                     </div>
                                         
                                     <div className="post-body">
@@ -233,7 +273,8 @@ class PostShow extends React.Component {
                                     <CreateCommentFormContainer postId={this.props.post.id} currentUserId={this.props.currentUserId} />
                                 </div>   
                                 {this.renderPopUp()}
-                                {this.renderEditForm()}                         
+                                {this.renderEditForm()}  
+                                {this.askDeleteQuestion()}                       
                             </div> 
                         </div>
                         <footer className="about-links">

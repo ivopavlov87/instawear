@@ -6,6 +6,8 @@ else
     json.profilePhoto asset_path('/images/profile-default.jpg')
 end 
 
+json.defaultAvatar asset_path('/images/profile-default.jpg')
+
 json.postIds user.post_ids
 
 json.followerIds user.follower_ids

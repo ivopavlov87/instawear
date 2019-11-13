@@ -26,6 +26,13 @@ class SharePostForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        let button = e.target;
+        let parent = button.parentElement;
+        let loading = document.createElement('p');
+        loading.innerText = 'Sharing...';
+        loading.classList.add('loader-btn');
+        parent.removeChild(button);
+        parent.appendChild(loading); 
         // const photo = this.props.post.photoUrl;
         const formData = new FormData();
         formData.append('post[caption]', this.state.caption);

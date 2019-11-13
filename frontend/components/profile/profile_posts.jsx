@@ -20,7 +20,10 @@ class ProfilePosts extends React.Component {
         if (posts.length === 0) {
             return (
                 <div className="no-posts-div">
-                    {/* <img src={`${asset_url}('path/to/no_posts.png')`} /> */}
+                    <img className="no-post-img" src="/images/camera.png"/>
+                    <h3 className="no-post-h3">Share Photos</h3>
+                    <p className="no-post-p">When you share photos, they'll appear on your profile.</p>
+
                 </div>
             );
         } else {

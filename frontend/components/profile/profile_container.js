@@ -19,6 +19,7 @@ const mapStateToProps = (state, ownProps) => {
         followers: state.entities.followers,
         following: state.entities.following,
         currentUserId: state.session.id,
+        currentUser: state.entities.users[state.session.id],
         errors: state.errors.session
     });
 };

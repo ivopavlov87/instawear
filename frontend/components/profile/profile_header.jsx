@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import FollowBarContainer from '../follow-bar/follow_bar_container';
 import ProfileEditForm from './profile_edit';
 // import FollowItem from "./follow_item_container";
@@ -30,8 +30,8 @@ class ProfileHeader extends React.Component {
 
         this.handleAvatar = this.handleAvatar.bind(this);
         this.updateAvatar = this.updateAvatar.bind(this);
-        this.renderEditForm = this.renderEditForm.bind(this);
-        this.changeEditing = this.changeEditing.bind(this);
+        // this.renderEditForm = this.renderEditForm.bind(this);
+        // this.changeEditing = this.changeEditing.bind(this);
         this.renderFollowers = this.renderFollowers.bind(this);
         this.renderFollowing = this.renderFollowing.bind(this);
         this.showFollowers = this.showFollowers.bind(this);
@@ -40,6 +40,12 @@ class ProfileHeader extends React.Component {
 
     handleAvatar(e) {
         this.setState({ photoFile: e.currentTarget.files[0] }, () => {
+            let loading = document.createElement('img');
+            loading.src = "/images/avatar-loading.gif";
+            loading.id = "avatar-loading-id"
+            let ava = document.getElementById("user-photo-id");
+            ava.appendChild(loading);
+            
             const formData = new FormData();
 
             if (this.state.photoFile) {
@@ -48,6 +54,10 @@ class ProfileHeader extends React.Component {
             this.props.updateUserPhoto({
                 formData,
                 id: this.props.user.id
+            }).then(() => {
+                let loadingBtn = document.getElementById("avatar-loading-id");
+                let avatarBtn = document.getElementById("user-photo-id");
+                avatarBtn.removeChild(loadingBtn);
             });
         });
     }
@@ -64,8 +74,10 @@ class ProfileHeader extends React.Component {
                             <div className="close" onClick={() => this.showFollowers(false)}></div>
                         </div>
                         <div className="follows-list">
-                            <div className="profile-follow-item">
-                                <p>No foll</p>
+                            <div className="no-follows-item">
+                                <img src="/images/add-follow.png"/>
+                                <h3>People who follow you</h3>
+                                <p>Once people follow you, you'll see them here.</p>
                             </div>
                         </div>
                         <div className="screen"
@@ -108,8 +120,10 @@ class ProfileHeader extends React.Component {
                             <div className="close" onClick={() => this.showFollowing(false)}></div>
                         </div >
                         <div className="follows-list">
-                            <div className="profile-follow-item">
-                                <p>No foll</p>
+                            <div className="no-follows-item">
+                                <img src="/images/add-follow.png" />
+                                <h3>People you follow</h3>
+                                <p>Once you follow people, you'll see them here.</p>
                             </div>
                         </div>
                         <div className="screen"
@@ -165,44 +179,50 @@ class ProfileHeader extends React.Component {
                             className="upload-avatar"
                             type="file"
                             accept=".jpg, .png, .jpeg"
-                            onChange={this.handleAvatar}
+                            onChange={(e) => {
+                                this.handleAvatar(e);
+                            }}
                         />
                     </label>
-                    <img src={this.props.user.profilePhoto} className="profile-avatar" />
+                    <div id="user-photo-id">
+                        <img id="profile-avatar-id" src={this.props.user.profilePhoto} className="profile-avatar" />
+                    </div>
                 </div>
             );
         } else {
-            return <div className="user-photo">
+            return <div className="user-photo" id="user-photo-id">
                 <img src={this.props.user.profilePhoto} className="profile-avatar" />
             </div>
         }
     }
 
-    renderEditForm() {
-        // return <ProfileEditForm
-        //     user={this.props.user}
-        //     updateUser={this.props.updateUser}
-        //     updateUserPhoto={this.props.updateUserPhoto}
-        //     closeForm={this.changeEditing}
-        //     errors={this.props.errors}
-        //     clearErrors={this.props.clearErrors}
-        // />
-        return this.state.editing === false ? (<></>) : (
-            <ProfileEditForm
-                user={this.props.user}
-                updateUser={this.props.updateUser}
-                closeForm={this.changeEditing}
-                errors={this.props.errors}
-                clearErrors={this.props.clearErrors}
-            />
-        );
-    }
+    // renderEditForm() {
+    //     // return <ProfileEditForm
+    //     //     user={this.props.user}
+    //     //     updateUser={this.props.updateUser}
+    //     //     updateUserPhoto={this.props.updateUserPhoto}
+    //     //     closeForm={this.changeEditing}
+    //     //     errors={this.props.errors}
+    //     //     clearErrors={this.props.clearErrors}
+    //     // />
+    //     return this.state.editing === false ? (<></>) : (
+    //         <ProfileEditForm
+    //             user={this.props.user}
+    //             currentUser={this.props.currentUser}
+    //             updateUser={this.props.updateUser}
+    //             closeForm={this.changeEditing}
+    //             errors={this.props.errors}
+    //             clearErrors={this.props.clearErrors}
+    //             updateUserPhoto={this.props.updateUserPhoto}
+    //         />
+    //     );
+    // }
 
-    changeEditing(bool) {
-        this.setState({
-            editing: bool
-        });
-    }
+    // changeEditing(bool) {
+    //     this.setState({
+    //         editing: bool
+    //     });
+    // }
 
     render() {
         let { user } = this.props; 
@@ -215,14 +235,15 @@ class ProfileHeader extends React.Component {
                 {/* <FollowBarContainer user={user} /> */}
             </div>);
 
-        let editProfileBtn = user.id === this.props.currentUserId ? (<div>
-            <button onClick={() => { this.changeEditing(true) }} 
-                className="profile-header-btn edit-profile-btn">
-                Edit Profile
-            </button>
-            {/* doing this to fetch all users for follows from FollowBarContainer*/}
-            {/* <FollowBarContainer user={user} userId={user.id}/>  */}
-            {/* pass the user and updateUser and errors*/}
+        let editProfileBtn = user.id === this.props.currentUserId ? (
+        <div>
+            <Link to={`/user/${this.props.user.id}/edit`}>
+                <button 
+                    // onClick={() => { this.changeEditing(true) }} 
+                    className="profile-header-btn edit-profile-btn">
+                    Edit Profile
+                </button>
+            </Link>
         </div>) : <></>;
 
         let followerCount = user.followerCount === 0 ? <p className="show-follows" onClick={() => { this.showFollowers(true)}}><strong>{user.followerCount}</strong> follower</p> :
@@ -252,12 +273,9 @@ class ProfileHeader extends React.Component {
                         <p><a href={`https://${user.website}`}><strong>{user.website}</strong></a></p>
                     </div>
                 </div>
-                {/* <div className="profile-menu">
-                    <ProfileTabs user={this.props.user} />
-                </div> */}
-                {this.renderEditForm()}
-                {this.renderFollowers()}
-                {this.renderFollowing()}
+                {/* {this.renderEditForm()} */}
+                {/* {this.renderFollowers()}
+                {this.renderFollowing()} */}
             </header>
         );
     }

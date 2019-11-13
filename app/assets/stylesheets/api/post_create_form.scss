@@ -157,7 +157,7 @@
     position: relative;
     z-index: 1;
     border-radius: 8px;
-    margin-left: 282px;
+    // margin-left: 282px;
 }
 
 .post-cancel-btn:hover {
@@ -171,6 +171,7 @@
     display: flex;
     flex-direction: row;
     height: 35px;
+    justify-content: flex-end;
 }
 
 .post-form-details {
@@ -216,4 +217,23 @@
 .form-location input {
     border: none;
     width: 100%;
+}
+
+.loader-btn {
+    color: #F0F0F0;
+    border: 1px solid #CCC;
+    font-family: sans-serif;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 9px 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    background-size: 100%;
+    position: relative;
+    z-index: 1;
+    border-radius: 8px;
+    background-color: #2e4c69;
+    margin-left: 16px;
 }

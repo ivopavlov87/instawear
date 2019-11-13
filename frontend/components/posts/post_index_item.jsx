@@ -5,6 +5,7 @@ import LikeBar from '../likes_bar/like_bar_container';
 import CommentIndexContainer from '../comments/comment_index_container';
 import CreateCommentFormContainer from '../comments/create_comment_form_container';
 import FollowBarContainer from '../follow-bar/follow_bar_container';
+import Shimmer from "react-shimmer-effect";
 
 class PostIndexItem extends React.Component {
     constructor(props) {
@@ -70,7 +71,18 @@ class PostIndexItem extends React.Component {
                         onClick={() => this.props.changeSelected(post.id)}/>
                 </div>
                 <div className="post-img">
-                    <img src={this.props.post.photoUrl} />
+                    <img src={this.props.post.photoUrl}
+                        onLoad={(e) => {
+                            let loader = e.target.parentElement.children[1];
+                            loader.classList.add("hide"); 
+                        }}
+                    />
+                    {/* <div className="rectangle"></div>  */}
+                    <div className="shimmer-container">
+                        <Shimmer>
+                            <div className="rect"></div>
+                        </Shimmer>
+                    </div>
                 </div>
                 <div className="post-item-footer">
                     <LikeBar postId={post.id} />
