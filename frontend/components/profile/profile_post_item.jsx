@@ -2,6 +2,7 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 // import LikeBar from '../likes_bar/like_bar_container';
+import Shimmer from "react-shimmer-effect";
 
 class ProfilePostItem extends React.Component {
     constructor(props) {
@@ -39,6 +40,19 @@ class ProfilePostItem extends React.Component {
                 onMouseLeave={this.handleOnMouseLeave}
                 >
                 <img src={this.props.post.photoUrl} />
+                {/* <div className="post-img-profile">
+                    <img src={this.props.post.photoUrl}
+                        onLoad={(e) => {
+                            let loader = e.target.parentElement.children[1];
+                            loader.classList.add("hide");
+                        }}
+                    />
+                    <div className="shimmer-container-profile">
+                        <Shimmer>
+                            <div className="rect-profile"></div>
+                        </Shimmer>
+                    </div>
+                </div> */}
                 <div className="post-likes hide">
                     {/* <LikeBar postId={this.props.post.id} /> */}
                     <div className="icons">

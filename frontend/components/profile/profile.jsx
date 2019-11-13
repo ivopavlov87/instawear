@@ -64,6 +64,7 @@ class Profile extends React.Component {
                             updateUserPhoto={updateUserPhoto}
                             fetchUser={this.props.fetchUser}
                             currentUserId={this.props.currentUserId}
+                            currentUser={this.props.currentUser}
                             errors={this.props.errors}
                             clearErrors={this.props.clearErrors}
                             followers={this.props.followers}

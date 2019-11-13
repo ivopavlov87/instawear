@@ -53,6 +53,14 @@ class CreatePostForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        let button = e.target;
+        let parent = button.parentElement;
+        let loading = document.createElement('p');
+        loading.innerText = 'Uploading...';
+        loading.classList.add('loader-btn');
+        parent.removeChild(button);
+        parent.appendChild(loading); 
+
         const formData = new FormData();
         formData.append('post[caption]', this.state.caption);
         formData.append('post[location]', this.state.location);        

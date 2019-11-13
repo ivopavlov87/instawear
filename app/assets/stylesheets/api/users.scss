@@ -228,3 +228,62 @@
 #avatar-upload-icon:hover {
     cursor: pointer;
 }
+
+.no-posts-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-post-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.no-post-h3 {
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+
+.no-post-p {
+    font-weight: 500;
+    color: #6d6a6a;
+}
+
+#user-photo-id {
+    position: relative;
+}
+
+#avatar-loading-id {
+    width: 25px;
+    position: absolute;
+    top: 40%;
+    left: 47%;
+}
+
+// .post-img-profile {
+//     position: relative;
+// }
+
+// .rect-profile {
+//     content: ""; 
+//     position: absolute; 
+//     top: 0;
+//     left: 0;
+//     right: 0; 
+//     // width: 100%; 
+//     // height: 100%; 
+//     // height: 600px;
+//     // width: 598px;
+//     width: 30.9%;
+//     // background: lightblue;
+// }
+
+// .Shimmer-shimmer-0-1-1 {
+//     background-size: 30.9% 30.9% !important;
+// }

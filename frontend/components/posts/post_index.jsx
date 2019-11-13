@@ -8,13 +8,16 @@ import { Link, withRouter } from 'react-router-dom';
 class PostIndex extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { loading: true, selected: null, sharing: false, deleting: false };
+        this.state = { loading: true, selected: null, currentPostId: null, sharing: false, deleting: false };
         this.renderPosts = this.renderPosts.bind(this);
         this.renderPopUp = this.renderPopUp.bind(this);
         this.changeSelected = this.changeSelected.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.renderShareForm = this.renderShareForm.bind(this);
         this.handleHistoryPush = this.handleHistoryPush.bind(this);
+        this.askDeleteQuestion = this.askDeleteQuestion.bind(this);
+        this.changeDeleting = this.changeDeleting.bind(this);
+        this.savePostId = this.savePostId.bind(this);
     }
 
     componentDidMount() {
@@ -35,7 +38,8 @@ class PostIndex extends React.Component {
     renderPopUp() {
         let { currentUser } = this.props;
         let deleteBtn = currentUser.postIds.includes(this.state.selected) ? (
-            <div onClick={this.handleDelete}>
+            // document.getElementById("poppy").classList.add("hide");
+            <div onClick={() => { this.savePostId(); this.changeSelected(null); this.changeDeleting(true); }}>
                 <p>Delete Post</p>
             </div>
         ) : 
@@ -49,8 +53,9 @@ class PostIndex extends React.Component {
         return (
             this.state.selected === null ? <div></div> : (
                 <div>
-                    <div className="popup-frame">
+                    <div className="popup-frame" id="poppy">
                         {deleteBtn}
+                        {/* becuase your assigning the selected to null that's why getting theerror */}
                         <div onClick={() => { this.changeSelected(null); this.handleHistoryPush() }}>
                             {/* <Link to={`/posts/${this.state.selected}`}> */}
                                 <p>Go to Post</p>
@@ -69,6 +74,39 @@ class PostIndex extends React.Component {
         );
     }
 
+    savePostId() {
+        this.setState({ currentPostId: this.state.selected });
+    }
+
+    // hidePopup() {
+    //     document.getElementById("poppy").classList.add("hide");
+    // }
+
+
+    askDeleteQuestion() {
+        return this.state.deleting === false ? <></> : (
+            <div>
+                <div className="delete-q-main">
+                    <div className="delete-question">
+                        Delete Post?
+                    </div>
+                    <div className="delete-q-answers">
+                        <div className="delete-cancel" onClick={() => this.changeDeleting(false)}>
+                            Cancel 
+                        </div>
+                        <div className="vertical-devider delete-devider"></div> 
+                        <div className="delete-confirm" onClick={this.handleDelete}>
+                            Delete
+                        </div>
+                    </div>
+                </div>
+                <div className="screen"
+                    onClick={() => this.changeDeleting(false)}>
+                </div>
+            </div> 
+        );
+    }
+
     renderShareForm() {
         let { createPost, posts } = this.props;
         let post = posts[this.state.selected];
@@ -84,14 +122,26 @@ class PostIndex extends React.Component {
             );
     }
 
-    handleDelete() {
+    handleDelete(e) {
+        let button = e.target;
+        let parent = button.parentElement;
+        let loading = document.createElement('div');
+        loading.innerText = 'Deleting...';
+        loading.classList.add('loader-delete-btn');
+        parent.removeChild(button);
+        parent.appendChild(loading); 
+
         let { removePost, posts } = this.props;
-        let post = posts[this.state.selected];
-        removePost(post).then(() => this.changeSelected(null));
+        let post = posts[this.state.currentPostId];
+        removePost(post).then(() => this.changeDeleting(false));
     }
 
     changeSelected(id) {
         this.setState({ selected: id });
+    }
+
+    changeDeleting(bool) {
+        this.setState({ deleting: bool });
     }
 
     renderPosts() {
@@ -159,6 +209,7 @@ class PostIndex extends React.Component {
                     </section>
                     {this.renderPopUp()}
                     {/* {this.renderShareForm()} */}
+                    {this.askDeleteQuestion()}
                 </div>    
             );
         }

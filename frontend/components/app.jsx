@@ -16,6 +16,7 @@ import ProfileContainer from './profile/profile_container';
 import PostShowContainer from './posts/post_show_container';
 import PostIndexContainer from './posts/post_index_container';
 import Splash from "./splash/splash";
+import ProfileEditForm from './profile/profile_edit';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -26,6 +27,7 @@ const App = () => (
         <AuthRoute path='/' component={Splash} />
         
         <Switch>
+            <ProtectedRoute path='/user/:id/edit' component={ProfileEditForm} />
             <ProtectedRoute path='/user/:id' component={ProfileContainer} />
             <ProtectedRoute path='/posts/:id' component={PostShowContainer} />
             <ProtectedRoute path='/feed' component={PostIndexContainer} />

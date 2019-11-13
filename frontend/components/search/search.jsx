@@ -24,7 +24,7 @@ class Search extends React.Component {
         e.stopPropagation(); 
         // change the icon to loading 
         // setTimeout and change the rendering to true
-        let loading = document.getElementById("search-box").children[2];
+        let loading = document.getElementById("search-box").children[3];
         loading.src = "/images/loading.gif"; 
         this.setState({ searchedUsername: e.target.value }, () => {
             setTimeout(() => this.handleQuery(), 500)
@@ -41,7 +41,7 @@ class Search extends React.Component {
     }
 
     handleQuery() {
-        let loading = document.getElementById("search-box").children[2];
+        let loading = document.getElementById("search-box").children[3];
         loading.src = "/images/cancel.png"; 
 
         let users = document.getElementsByClassName('search-users')[0];
@@ -60,7 +60,7 @@ class Search extends React.Component {
             this.state.rendering === false ? <></> : (
                 this.state.searchedUsername === "" ? <div className="search-users empty-search-query"></div> : (
                     <div>
-                        <div className="triangle"></div>
+                        {/* <div className="triangle"></div> */}
                         <div className="search-users">
                             {users.map((user, idx) => {
                                 return <SearchItem
@@ -85,6 +85,7 @@ class Search extends React.Component {
             <div>
                 <div className="search-container" id="search-box">
                     <i className="fas fa-search search-icon"></i>
+                    <div className="vertical-devider search-vertical-devider"></div>
                     <input
                         // id="search-input"
                         type="text"
