@@ -71,13 +71,12 @@ class PostIndexItem extends React.Component {
                         onClick={() => this.props.changeSelected(post.id)}/>
                 </div>
                 <div className="post-img">
-                    <img src={this.props.post.photoUrl}></img>
-                        {/* onLoad={(e) => {
+                    <img src={this.props.post.photoUrl}
+                        onLoad={(e) => {
                             let loader = e.target.parentElement.children[1];
                             loader.classList.add("hide"); 
                         }}
-                    /> */}
-                    {/* <div className="rectangle"></div>  */}
+                    />
                     <div className="shimmer-container">
                         <Shimmer>
                             <div className="rect"></div>
