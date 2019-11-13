@@ -9,10 +9,6 @@ const userFollowingReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_USER:
             return action.payload.following || [];
-        // case RECEIVE_FOLLOW:
-        //     debugger
-        // case REMOVE_FOLLOW:
-        //     debugger 
         default:
             return state;
     }

@@ -27,7 +27,6 @@ end
 
 @followers ||= []
 @following ||= []
-# debugger
 
 json.followers do   
     @followers.each do |follower| 

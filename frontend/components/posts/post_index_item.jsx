@@ -21,7 +21,6 @@ class PostIndexItem extends React.Component {
         let followBtn = currentUser.id !== user.id ? (
             <div className="post-show-follow-bar-div">
                 <div className="dot-separator"></div>
-                {/* <FollowBarContainer user={user} followedByCurrentUser={user.followedByCurrentUser} /> */}
                 <FollowBarContainer user={user} />
             </div>
         ) : <></>
@@ -99,5 +98,4 @@ class PostIndexItem extends React.Component {
     }
 }
 
-// export default withRouter(ProfilePostItem);
 export default withRouter(PostIndexItem);

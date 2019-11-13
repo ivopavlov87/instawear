@@ -35,7 +35,6 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    // padding: 0 10px;
     margin-right: 10px;
     object-fit: cover;
 }
@@ -146,18 +145,8 @@
     justify-content: center;
     align-items: center;
     flex-shrink: 1;
-    // margin: 20px;
     max-height: calc(100% - 40px);
 }
-
-// .popup-frame a {
-//     text-decoration: none;
-//     color: black;
-// }
-
-// .popup-frame a:hover {
-//     color: #3897f0;
-// }
 
 .popup-frame div {
     text-align: center;
@@ -266,11 +255,8 @@
     top: 0;
     left: 0;
     right: 0; 
-    // width: 100%; 
-    // height: 100%; 
     height: 600px;
     width: 598px;
-    // background: lightblue;
 }
 
 .Shimmer-shimmer-0-1-1 {

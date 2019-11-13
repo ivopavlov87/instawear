@@ -16,7 +16,6 @@ export const createFollow = follow => {
     return $.ajax({
         method: 'POST',
         url: '/api/follows',
-        // data: { follow: { following_id: following_id } }
         data: { follow }
     });
 };

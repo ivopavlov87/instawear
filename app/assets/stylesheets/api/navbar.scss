@@ -7,17 +7,14 @@
 
 .navbar-container {
     background: white;
-    // border-bottom: 1px solid #ebebeb;
     border-bottom: 1px solid #dbdbdb;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-end;
-    // position: sticky;
     top: 0px;
     height: 80px;
     z-index: 4;
-    // min-width: 800px;
     position: fixed;
     width: 100%;
 }
@@ -36,10 +33,6 @@
     height: 24px;
     margin-left: 30px; 
 }
-
-// .nav-links img:hover {
-//     cursor: pointer;
-// }
 
 .navbar-right {
     display: flex;

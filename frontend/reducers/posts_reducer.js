@@ -16,11 +16,6 @@ import {
     REMOVE_LIKE
 } from "../actions/like_actions";
 
-import {
-    RECEIVE_FOLLOW,
-    REMOVE_FOLLOW
-} from '../actions/follow_actions';
-
 
 const postsReducer = (state ={}, action) => {
     Object.freeze(state);
@@ -33,10 +28,8 @@ const postsReducer = (state ={}, action) => {
             return Object.assign({}, state, { [action.payload.post.id]: action.payload.post });   
         case REMOVE_POST:
             delete newState[action.post.id];
-            // debugger
             return newState;
         case RECEIVE_USER:
-            // debugger
             return Object.assign({}, action.payload.posts);
         case RECEIVE_COMMENT:
             newState[action.comment.post_id].comment_ids.push(action.comment.id);
@@ -56,22 +49,6 @@ const postsReducer = (state ={}, action) => {
             newState[action.like.post_id].like_ids = newState[action.like.post_id].like_ids
                 .filter(likeId => likeId != action.like.id);  
             return newState;
-        // case RECEIVE_FOLLOW:
-        //     debugger
-        //     newState[action.follow.following_id].followerCount += 1;
-        //     newState[action.follow.follower_id].followingCount += 1;
-        //     newState[action.follow.following_id].followedByCurrentUser = true;
-        //     // remove from followings and followers 
-        //     // debugger
-        //     return newState;
-        // case REMOVE_FOLLOW:
-        //     debugger
-        //     newState[action.following_id].followerCount -= 1;
-        //     newState[action.follower_id].followingCount -= 1;
-        //     newState[action.following_id].followedByCurrentUser = false;
-        //     // same here
-        //     // debugger
-        //     return newState; 
         default:
             return state;
     }

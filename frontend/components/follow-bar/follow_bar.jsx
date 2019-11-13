@@ -15,32 +15,13 @@ class FollowBar extends React.Component {
         this.setState({ suggestionOn: bool });
     }
 
-    // componentDidMount() {
-    //     if (this.props.user === undefined) {
-    //         this.fetchUser(this.props.user.id )
-    //     }
-        // this.props.fetchUsers();
-    // }
-
-    // componentDidUpdate() {
-    //     let { user } = this.props; 
-    //     if (user === undefined) {
-    //         this.props.fetchUser(user.id);
-    //     }
-    // }
-
     unfollow(e) {
-        // e.stopPropagation();
-        // let followers = this.props.followers;
-        // let curentUserFollow = followers.filter(follower => follower.followed_id === this.props.currentUserId);
-        // if (curentUserFollow) this.props.deleteFollow(curentUserFollow[0]);
         this.props.deleteFollow(this.props.user.id);
     }
 
     follow(e) {
-        // e.stopPropagation();
         const userId = this.props.user.id; // pass the userId from the profile
-        this.props.createFollow({ following_id: userId});//, follower_id: this.props.currentUserId });
+        this.props.createFollow({ following_id: userId});
     }
 
     renderSuggestion() {
@@ -71,7 +52,6 @@ class FollowBar extends React.Component {
     }
 
     render() {
-        // return <p>from the follow bar</p>
         let { user, currentUserId } = this.props;
         if (user === undefined) {
             return <div></div>

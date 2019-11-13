@@ -5,7 +5,6 @@ class EditPostForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = this.props.post;
-        // this.closeForm = this.closeForm.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -13,29 +12,8 @@ class EditPostForm extends React.Component {
         return e => this.setState({ [field]: e.target.value });
     }
 
-    // closeForm() {
-    //     this.props.changeSelected(null);
-    //     this.setState({
-    //         caption: '',
-    //         location: '',
-    //         photo: this.props.post.photo
-    //     });
-
-    //     // this.props.changeSelected(null);
-    // }
-
     handleSubmit(e) {
         e.preventDefault();
-        // const photo = this.props.post.photoUrl;
-        // const formData = new FormData();
-        // formData.append('post[caption]', this.state.caption);
-        // formData.append('post[location]', this.state.location);
-        // formData.append('post[photo]', this.state.photo);
-
-        // debugger
-        // let post = this.state;
-        // this.props.action(formData)
-        //     .then(() => this.closeForm());
         let button = e.target;
         let parent = button.parentElement;
         let loading = document.createElement('p');
@@ -60,10 +38,6 @@ class EditPostForm extends React.Component {
                     </div>
 
                     <div className="post-content">
-                        {/* <div className="preview-img">
-                            <img className="preview" src={this.props.post.photoUrl} />
-                        </div> */}
-
                         <div className="post-form-details">
                             <label>
                                 Location: 
@@ -103,13 +77,8 @@ class EditPostForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    // postErrors: state.errors.posts
     formTitle: "Edit Post",
     btnText: "Update"
 });
-
-// const mapDispatchToProps = dispatch => ({
-//     action: post => dispatch(createPost(post))
-// });
 
 export default connect(mapStateToProps)(EditPostForm);

@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import { selectPostComments } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => { 
-    // let comments = selectPostComments(state, ownProps)
     let comments = ownProps.post.comment_ids.map(
         id => state.entities.comments[id]);
     return {

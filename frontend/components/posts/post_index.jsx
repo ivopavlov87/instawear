@@ -13,7 +13,6 @@ class PostIndex extends React.Component {
         this.renderPopUp = this.renderPopUp.bind(this);
         this.changeSelected = this.changeSelected.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
-        this.renderShareForm = this.renderShareForm.bind(this);
         this.handleHistoryPush = this.handleHistoryPush.bind(this);
         this.askDeleteQuestion = this.askDeleteQuestion.bind(this);
         this.changeDeleting = this.changeDeleting.bind(this);
@@ -21,15 +20,9 @@ class PostIndex extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.fetchUsers();
         this.props.fetchAllPosts()
             .then(() => this.setState({ loading: false }));
     }
-
-    // componentDidUpdate() {
-    //     this.props.fetchAllPosts()
-    //         .then(() => this.setState({ loading: false }));
-    // }
 
     handleHistoryPush() {
         this.props.history.push(`/posts/${this.state.selected}`);
@@ -38,28 +31,19 @@ class PostIndex extends React.Component {
     renderPopUp() {
         let { currentUser } = this.props;
         let deleteBtn = currentUser.postIds.includes(this.state.selected) ? (
-            // document.getElementById("poppy").classList.add("hide");
             <div onClick={() => { this.savePostId(); this.changeSelected(null); this.changeDeleting(true); }}>
                 <p>Delete Post</p>
             </div>
         ) : 
         null;
-        // (
-        //     <div onClick={ () => { this.setState({ sharing: true }) } }>
-        //         <p>Share Post</p>
-        //     </div>
-        // );
 
         return (
             this.state.selected === null ? <div></div> : (
                 <div>
                     <div className="popup-frame" id="poppy">
                         {deleteBtn}
-                        {/* becuase your assigning the selected to null that's why getting theerror */}
                         <div onClick={() => { this.changeSelected(null); this.handleHistoryPush() }}>
-                            {/* <Link to={`/posts/${this.state.selected}`}> */}
-                                <p>Go to Post</p>
-                            {/* </Link> */}
+                            <p>Go to Post</p>
                         </div>
                         <div id="popup-cancel" onClick={() => this.changeSelected(null)}>
                             <p>Cancel</p>
@@ -77,11 +61,6 @@ class PostIndex extends React.Component {
     savePostId() {
         this.setState({ currentPostId: this.state.selected });
     }
-
-    // hidePopup() {
-    //     document.getElementById("poppy").classList.add("hide");
-    // }
-
 
     askDeleteQuestion() {
         return this.state.deleting === false ? <></> : (
@@ -105,21 +84,6 @@ class PostIndex extends React.Component {
                 </div>
             </div> 
         );
-    }
-
-    renderShareForm() {
-        let { createPost, posts } = this.props;
-        let post = posts[this.state.selected];
-
-        return this.state.sharing === false ? (
-            <></>
-        ) : (
-                <SharePostForm
-                    post={post}
-                    action={createPost}
-                    changeSelected={this.changeSelected} 
-                    />
-            );
     }
 
     handleDelete(e) {
@@ -146,12 +110,10 @@ class PostIndex extends React.Component {
 
     renderPosts() {
         const posts = Object.values(this.props.posts);
-        // const users = Object.values(this.props.users);
 
         if (posts.length === 0) {
             return (
                 <div className="grid-content no-posts-div">
-                    {/* <img src={`${asset_url}('path/to/no_posts.png')`} /> */}
                 </div>
             );
         } else {
@@ -187,19 +149,6 @@ class PostIndex extends React.Component {
                 </div>
             );
         } 
-        // else if (this.state.deleting === true) {
-        //     return (
-        //         <div className="loading">
-        //             <p>Deleting...</p>
-        //         </div>
-        //     );
-        // } else if (this.state.sharing === true) {
-        //     return (
-        //         <div className="loading">
-        //             <p>Sharing...</p>
-        //         </div>
-        //     );
-        // } 
         else {
             return (
                 <div>
@@ -208,7 +157,6 @@ class PostIndex extends React.Component {
                         {this.renderPosts()}
                     </section>
                     {this.renderPopUp()}
-                    {/* {this.renderShareForm()} */}
                     {this.askDeleteQuestion()}
                 </div>    
             );

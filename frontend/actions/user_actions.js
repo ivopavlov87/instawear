@@ -20,13 +20,6 @@ const receiveSearchUsers = payload => ({
     payload
 });
 
-// const receiveCurrentUser = payload => {
-//     return {
-//         type: RECEIVE_CURRENT_USER,
-//         payload
-//     };
-// };
-
 export const fetchUser = id => dispatch => {
     return UserAPIUtil.fetchUser(id)
         .then(payload => dispatch(receiveUser(payload)));
@@ -40,7 +33,6 @@ export const fetchUsers = () => dispatch => {
 export const updateUser = (user) => (dispatch) => {
     return UserAPIUtil.updateUser(user).
         then(payload => {
-            // return dispatch(receiveCurrentUser(user));
             return dispatch(receiveUser(payload));
         });
 };
@@ -48,7 +40,6 @@ export const updateUser = (user) => (dispatch) => {
 export const updateUserPhoto = (user) => (dispatch) => {
     return UserAPIUtil.updateUserPhoto(user).
         then(payload => {
-            // return dispatch(receiveCurrentUser(user));
             return dispatch(receiveUser(payload));
         });
 };

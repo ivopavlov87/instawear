@@ -8,11 +8,7 @@ const userFollowersReducer = (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_USER:
-            return action.payload.followers || [];
-        // case RECEIVE_FOLLOW:
-        //     debugger   
-        // case REMOVE_FOLLOW:
-        //     debugger     
+            return action.payload.followers || []; 
         default:
             return state;
     }

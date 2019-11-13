@@ -6,12 +6,9 @@
     font-size: 14px;
     line-height: 18px;
     font-weight: 600;
-    // padding: 5px 9px;
     border: 1px solid #dbdbdb;
     border-radius: 4px;
     background-color: #fafafa;
-    // margin-top: 5px;
-    // width: 90px;
     padding: 6px 24px;
 }
 
@@ -43,16 +40,11 @@
     justify-content: center;
     align-items: center;
     flex-shrink: 1;
-    // margin: 20px;
     max-height: calc(100% - 40px);
 }
 
 .unfollow-sgs-red {
-    // color: #ed4956;
     font-weight: 600;
-    // margin: 16px 32px;
-    // text-align: center;
-    // height: 35px;
     border-bottom: 1px solid #ebebeb;
     width: 100%;
     text-align: center;
@@ -84,8 +76,6 @@
 }
 
 .unfollow-sgs-div {
-    // height: 20px;
-    // border-bottom: 1px solid #ebebeb;
     width: 100%;
     text-align: center;
 }
@@ -95,15 +85,8 @@
 }
 
 .unfollow-sgs-avatar-wrapper {
-    // margin: 16px;
     margin-top: 32px;
 }
-
-// .sgs-popup-frame p {
-//     margin: 16px 32px;
-//     text-align: center;
-//     font-size: 14px;
-// }
 
 #sgs-popup-username-p {
     margin: 16px 32px;
@@ -125,7 +108,3 @@
     font-size: 14px;
     color: black;
 }
-
-// .sgs-popup-frame p {
-//     margin-bottom: 5px;
-// }

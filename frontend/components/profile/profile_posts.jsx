@@ -1,7 +1,5 @@
 import React from 'react';
 import ProfilePostItem from './profile_post_item';
-import { selectUserPosts } from '../../reducers/selectors';
-import { connect } from 'react-redux';
 
 class ProfilePosts extends React.Component {
     constructor(props) {
@@ -29,13 +27,11 @@ class ProfilePosts extends React.Component {
         } else {
             const postItems = posts.map((post, idx) => {
                 return (
-                    // <figure className="profile-post-item" key={`figure-${idx}`}>
-                        <ProfilePostItem
-                            key={idx}
-                            post={post}
-                            user={user} 
-                        />
-                    // </figure>
+                    <ProfilePostItem
+                        key={idx}
+                        post={post}
+                        user={user} 
+                    />
                 ) 
             });
             return (
@@ -60,14 +56,5 @@ class ProfilePosts extends React.Component {
         );
     }
 }
-
-// const mapStateToProps = (state, ownProps) => ({
-//     posts: selectUserPosts(state, ownProps),
-// });
-
-// const mapDispatchToProps = dispatch => ({
-// });
-
-// export default connect(mapStateToProps)(ProfilePosts);
 
 export default ProfilePosts;

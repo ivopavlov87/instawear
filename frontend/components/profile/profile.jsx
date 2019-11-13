@@ -1,8 +1,6 @@
 import React from 'react';
 import ProfileHeader from './profile_header';
 import ProfilePosts from './profile_posts';
-// import CreatePostFormContainer from '../post_form/create_post_form_container';
-// import FollowBarContainer from '../follow-bar/follow_bar_container';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 
 
@@ -13,13 +11,11 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.fetchUsers();
         this.props.fetchUser(this.props.match.params.id)
             .then(() => this.setState({loading: false}));
     }
 
     componentDidUpdate(prevProps) {
-        // this.props.fetchUsers();
         if (this.props.user === undefined) {
             this.props.fetchUser(this.props.match.params.id)
                 .then(() => this.setState({ loading: false }));
@@ -29,17 +25,6 @@ class Profile extends React.Component {
                 .then(() => this.setState({loading: false}));
         }
     }
-
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     if (this.props.match.params.id !== nextProps.match.params.id) {
-    //         this.setState({ loading: true });
-    //         this.props.fetchUser(nextProps.match.params.id)
-    //             .then(() => this.setState({ loading: false }));
-    //         // debugger    
-    //         return false;
-    //     }
-    //     return true;
-    // }
 
     render() {
         const user = this.props.user;
@@ -70,7 +55,6 @@ class Profile extends React.Component {
                             followers={this.props.followers}
                             following={this.props.following}
                         />
-                        {/* <FollowBarContainer user={user} /> */}
                         <ProfilePosts user={user} posts={posts} />
                     </div>
                     <footer className="about-links">

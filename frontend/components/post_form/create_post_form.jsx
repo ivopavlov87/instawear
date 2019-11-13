@@ -8,7 +8,6 @@ class CreatePostForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
         this.closeForm = this.closeForm.bind(this);
-        // this.close = this.close.bind(this);
         this.renderSignupForm = this.renderSignupForm.bind(this);
     }
 
@@ -39,17 +38,6 @@ class CreatePostForm extends React.Component {
         });
     }
 
-    // close() {
-    //     this.setState({
-    //         caption: '',
-    //         location: '',
-    //         photo: null,
-    //         preview: null
-    //     });
-
-    //     document.getElementById('new-post').className = 'hide';
-    // }
-
     handleSubmit(e) {
         e.preventDefault();
 
@@ -79,11 +67,6 @@ class CreatePostForm extends React.Component {
     popUp() {
         if (!this.state.photo) {
             return <div></div>
-            // return (
-            //     <div className="loading">
-            //         <i className="fab fa-instagram" />
-            //     </div>
-            // );
         } else {
         return (
             <div className="upload-frame">
@@ -150,22 +133,14 @@ class CreatePostForm extends React.Component {
 
     render() {
         if (this.props.currentUser) {
-            // if (this.state.loading === true) {
-            //     return (
-            //         <div className="loading">
-            //             <i className="fab fa-instagram" />
-            //         </div>
-            //     );
-            // } else {
-                return (
-                    <div>
-                        {this.renderPostForm()}
-                        <div id="new-post" className="add-post-btn">
-                            {this.popUp()}
-                        </div>
+            return (
+                <div>
+                    {this.renderPostForm()}
+                    <div id="new-post" className="add-post-btn">
+                        {this.popUp()}
                     </div>
-                ); 
-            // }     
+                </div>
+            ); 
         } 
     }
 }

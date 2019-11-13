@@ -1,7 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-// import LikeBar from '../likes_bar/like_bar_container';
 import Shimmer from "react-shimmer-effect";
 
 class ProfilePostItem extends React.Component {
@@ -21,7 +19,6 @@ class ProfilePostItem extends React.Component {
     handleOnMouseEnter(e) {
         let likes = e.currentTarget.lastElementChild;
         likes.classList.remove("hide");
-        // likes.children[1].children[0].children[1].classList.add("hide");
     }
 
     handleOnMouseLeave(e) {

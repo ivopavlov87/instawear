@@ -6,25 +6,6 @@ class CommentIndexItem extends React.Component {
     constructor(props) {
         super(props);
     }
-    
-    // componentDidMount() {
-    //     let { comment } = this.props;
-    //     if (this.props.user === undefined) {
-    //         // debugger
-    //         this.props.fetchUser(comment.user_id);
-    //     }
-    // }
-
-    // componentDidUpdate(prevProps) {
-    //     let { comment } = this.props;
-    //     if (this.props.user === undefined) {
-    //         // debugger
-    //         this.props.fetchUser(comment.user_id);
-    //     }
-    //     if (prevProps.match.params.id !== this.props.match.params.id) {
-    //         this.props.fetchUser(comment.user_id);
-    //     }
-    // }
 
     renderDelete() {
         const { user, currentUserId } = this.props;
@@ -38,7 +19,6 @@ class CommentIndexItem extends React.Component {
 
     render () {
         if (this.props.user === undefined) {
-            // debugger
             return null; 
         } else {
             if (this.props.location.pathname === '/feed') {
@@ -58,7 +38,6 @@ class CommentIndexItem extends React.Component {
                 );
             } else {
                 let { comment, user } = this.props;
-                // debugger
                 return (
                     <div className="post-show-caption">
                         <Link to={`/user/${user.id}`}>
