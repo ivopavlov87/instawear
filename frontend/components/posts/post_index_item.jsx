@@ -17,6 +17,7 @@ class PostIndexItem extends React.Component {
 
     render() {
         let { user, post, currentUser } = this.props;
+        const { classes } = this.props;
         let captionDiv;
         let followBtn = currentUser.id !== user.id ? (
             <div className="post-show-follow-bar-div">
@@ -70,12 +71,12 @@ class PostIndexItem extends React.Component {
                         onClick={() => this.props.changeSelected(post.id)}/>
                 </div>
                 <div className="post-img">
-                    <img src={this.props.post.photoUrl}
-                        onLoad={(e) => {
+                    <img src={this.props.post.photoUrl}></img>
+                        {/* onLoad={(e) => {
                             let loader = e.target.parentElement.children[1];
                             loader.classList.add("hide"); 
                         }}
-                    />
+                    /> */}
                     {/* <div className="rectangle"></div>  */}
                     <div className="shimmer-container">
                         <Shimmer>
