@@ -20,8 +20,6 @@ class SharePostForm extends React.Component {
             location: '',
             photo: this.props.post.photo
         });
-
-        // this.props.changeSelected(null);
     }
 
     handleSubmit(e) {
@@ -33,16 +31,11 @@ class SharePostForm extends React.Component {
         loading.classList.add('loader-btn');
         parent.removeChild(button);
         parent.appendChild(loading); 
-        // const photo = this.props.post.photoUrl;
         const formData = new FormData();
         formData.append('post[caption]', this.state.caption);
         formData.append('post[location]', this.state.location);
         formData.append('post[photo]', this.state.photo);
 
-        // debugger
-        // let post = this.state;
-        // this.props.action(formData)
-        //     .then(() => this.closeForm());
         this.props.action(formData)
             .then(() => {
                 this.setState({
@@ -101,13 +94,8 @@ class SharePostForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    // postErrors: state.errors.posts
     formTitle: "Share Post",
     btnText: "Share"
 });
-
-// const mapDispatchToProps = dispatch => ({
-//     action: post => dispatch(createPost(post))
-// });
 
 export default connect(mapStateToProps)(SharePostForm);

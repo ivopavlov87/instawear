@@ -38,10 +38,7 @@
 }
 
 .session-link p:last-child {
-    // text-decoration: none;
     color: #3897f0;
-    // font-size: 14px;
-    // margin-bottom: 5px;
     cursor: pointer;
 }
 
@@ -163,9 +160,6 @@
 @font-face {
    font-family: Billabong;
    src: asset-url('../Billabong.ttf');
-//    src: asset-url('../Billabong'),
-//         asset-url('../Billabong.ttf') format('truetype'),
-//         asset-url('../Billabong.svg#font') format('svg');
 }
 
 .logo {

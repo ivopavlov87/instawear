@@ -1,12 +1,5 @@
 import React from 'react';
 import SearchItem from './search_item';
-// import {
-//     Route,
-//     Redirect,
-//     Switch,
-//     Link,
-//     HashRouter
-// } from 'react-router-dom';
 
 class Search extends React.Component {
     constructor(props) {
@@ -55,12 +48,10 @@ class Search extends React.Component {
 
     renderUsersList() {
         let users = Object.values(this.props.users);
-        // debugger
         return (
             this.state.rendering === false ? <></> : (
                 this.state.searchedUsername === "" ? <div className="search-users empty-search-query"></div> : (
                     <div>
-                        {/* <div className="triangle"></div> */}
                         <div className="search-users">
                             {users.map((user, idx) => {
                                 return <SearchItem
@@ -87,7 +78,6 @@ class Search extends React.Component {
                     <i className="fas fa-search search-icon"></i>
                     <div className="vertical-devider search-vertical-devider"></div>
                     <input
-                        // id="search-input"
                         type="text"
                         className="search-container-input"
                         placeholder="Search"
@@ -97,13 +87,9 @@ class Search extends React.Component {
                     <img src="/images/cancel.png" onClick={this.clearSearch} className="cancel-icon" />
                     {this.renderUsersList()}
                 </div>
-                {/* <div className="screen search-screen"
-                    onClick={() => this.changeRendering(false)}>
-                </div> */}
             </div>
         )
     }
-    
 }
 
 export default Search;

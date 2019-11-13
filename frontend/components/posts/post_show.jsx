@@ -25,14 +25,12 @@ class PostShow extends React.Component {
     }
 
     componentDidMount() {
-        // debugger
         this.props.fetchPost(this.props.match.params.id)
             .then(() => this.setState({ loading: false }));
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.post === undefined) {
-            // debugger
             this.props.fetchPost(this.props.match.params.id)
                 .then(() => this.setState({ loading: false }));
         }
@@ -40,24 +38,6 @@ class PostShow extends React.Component {
             this.props.fetchPost(this.props.match.params.id);
         }
     }
-
-    // componentDidMount() {
-        // if (this.props.post === undefined) { 
-            // this.props.fetchPost(this.props.match.params.id)
-            //     .then(() => this.setState({ loading: false }));
-        // }
-    // }
-
-    // componentDidUpdate(prevProps) {
-        // if (this.props.post === undefined) {
-        //     this.props.fetchPost(this.props.match.params.id)
-        //         .then(() => this.setState({ loading: false }));
-        // }
-    //     if (prevProps.match.params.id !== this.props.match.params.id) {
-    //         this.props.fetchPost(this.props.match.params.id)
-    //             .then(() => this.setState({ loading: false }));
-    //     } 
-    // }
 
     renderPopUp() {
         let { currentUserId, user } = this.props;
@@ -109,11 +89,6 @@ class PostShow extends React.Component {
         });
     }
 
-    // handleDelete() {
-    //     this.props.removePost(this.props.post);
-    //     this.closeForm();
-    // }
-
     handleDelete() {
         let { removePost } = this.props;
         let post = this.props.post;
@@ -156,33 +131,9 @@ class PostShow extends React.Component {
 
     goToPreviousURL() {
         this.props.history.goBack();
-        // this.props.history.push(this.props.url);
     }
 
     render() {
-        // let captionDiv;
-
-        // if (!post.caption) {
-        //     captionDiv = <div className="post-caption"></div>
-        // } else if (post.caption.length < 106 || this.state.expand === true) { // i literally counted the number, lol
-        //     captionDiv = <div className="post-caption">
-        //         <p>
-        //             {post.caption}
-        //         </p>
-        //     </div>
-        // } else {
-        //     captionDiv = <div className="post-caption">
-        //         <p>
-        //             {post.caption.slice(0, 107) + "..."}
-        //             <strong
-        //                 className="caption-more"
-        //                 onClick={() => this.setState({ expand: true })}>
-        //                 more
-        //             </strong>
-        //         </p>
-        //     </div>
-        // }
-
         if (this.state.loading === true) {
             return (
                 <div className="loading">
@@ -191,7 +142,6 @@ class PostShow extends React.Component {
             );
         } else {
             if (this.props.post === undefined) {
-                // debugger
                 return (
                     <div>Page is not available</div>
                 );
@@ -215,9 +165,6 @@ class PostShow extends React.Component {
                 return (
                     <div className="post-show-main">
                         <NavBarContainer />
-                        {/* <div className="post-show-close post-show-grid">
-                            <a className="close" onClick={this.closeForm}></a>
-                        </div> */}
                         <div id="post-show-container" className="post-show-container">
                             <div className="post-show-content">
                                 <div className="post-show-img">
@@ -239,9 +186,6 @@ class PostShow extends React.Component {
                                                 <p className ="post-author-info-p">{post.location}</p>
                                             </div>
                                         </div>
-                                        {/* <img className="post-show-header-img" src="/images/ellipsis.png" alt="edit post" id="ellipsis-img"
-                                            onClick={() => {this.changeSelected(this.props.post.id)}}
-                                        /> */}
                                         {actionBtn}
                                     </div>
                                         
@@ -255,7 +199,6 @@ class PostShow extends React.Component {
                                                     <Link to={`/user/${user.id}`}>
                                                         <strong>{user.username}</strong>
                                                     </Link>
-                                                    {/* {captionDiv} */}
                                                     <p>{post.caption}</p>                                              
                                                 </div>
                                                 <p className="post-create-date">{formatCreatedAt(post.created_at).toUpperCase()}</p>
@@ -268,7 +211,6 @@ class PostShow extends React.Component {
                                     </div>
 
                                     <LikeBar postId={this.props.post.id} />
-                                    {/* <p className="post-create-date-detailed">{reformatDate(formatCreatedAt(this.props.post.updated_at)).toUpperCase()}</p> */}
                                     <p className="created-date-detailed">{reformatCreatedAt(this.props.post.updated_at).toUpperCase()}</p>
                                     <CreateCommentFormContainer postId={this.props.post.id} currentUserId={this.props.currentUserId} />
                                 </div>   

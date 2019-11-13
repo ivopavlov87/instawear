@@ -1,27 +1,6 @@
-// .slide-container {
-//   width: 70%;
-//   margin: auto; 
-// }
-
-// .fade-div-wrapper {
-//   background: image-url("images/splash-phone.png");
-// }
-
-// .each-fade {
-//   display: flex;
-// }
-
-// .each-fade .image-container {
-//   width: 75%;
-//   overflow: hidden;
-// }
-
 .each-fade .image-container img {
-  // width: 100%;
   width: 240px;
   height: 425px;
-  // left: 122px;
-  // top: 107px;
 }
 
 .splash-page {
@@ -67,68 +46,4 @@
 .indicators {
   display: none !important;
 }
-
-// .cover {
-//   position: absolute;
-//   width: 240px;
-//   height: 425px;
-//   left: 122px;
-//   top: 107px;
-//   z-index: 2;
-// }
-
-// .cover {
-//     position: absolute;
-//     width: 240px;
-//     height: 425px;
-//     left: 122px;
-//     top: 107px;
-//     animation-name: fade;
-//     animation-timing-function: ease-in-out;
-//     animation-iteration-count: infinite;
-//     animation-duration: 20s;
-//     animation-direction: alternate;
-// }
-
-// #delay-1 {
-//     animation-delay: 10s;
-// }
-
-// #delay-2 {
-//     animation-delay: 6s;
-// }
-
-// #delay-3 {
-//     animation-delay: 4s;
-// }
-
-// #delay-4 {
-//     animation-delay: 2s;
-// }
-
-// #finish{
-//     animation-delay: 0s;
-// }
-
-// // .phone-background {
-// //     position: absolute;
-// // }
-
-// @keyframes fade {
-//     0% {
-//     opacity:1;
-//   }
-//   17% {
-//     opacity:0;
-//   }
-//   25% {
-//     opacity:0;
-//   }
-//   92% {
-//     opacity:0;
-//   }
-//   100% {
-//     opacity:1;
-//   }
-// }
 

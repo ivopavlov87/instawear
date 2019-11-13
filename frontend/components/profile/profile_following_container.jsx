@@ -1,6 +1,4 @@
-// import FollowBarContainer from '../follow-bar/follow_bar_container';
 import React from 'react';
-// import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import FollowItem from './follow_item_container';
 import { fetchUsers } from '../../actions/user_actions';
@@ -14,7 +12,6 @@ class ProfileFollowing extends React.Component {
 
     componentDidMount() {
         this.props.fetchUsers();
-        // this.props.fetchFollows();
     }
 
     render() {
@@ -39,9 +36,6 @@ class ProfileFollowing extends React.Component {
         </div>
     }
 }
-
-// const mapStateToProps = (state, ownProps) => {
-// };
 
 const mapDispatchToProps = dispatch => ({
     fetchUsers: () => dispatch(fetchUsers()),

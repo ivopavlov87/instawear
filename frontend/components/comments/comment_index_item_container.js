@@ -5,7 +5,6 @@ import { fetchUser } from '../../actions/user_actions';
 
 
 const mapStateToProps = (state, ownProps) => { 
-    // debugger
     return {
         user: (ownProps.comment === undefined) ? undefined : state.entities.users[ownProps.comment.user_id],
         currentUserId: state.session.id,

@@ -8,11 +8,9 @@
     height: 56px;
     padding-left: 16px;
     padding-right: 16px;
-    // padding: 8px 16px;
     align-items: center; 
     border-top: 1px solid #ebebeb;
     margin-top: 4px;
-    // width: 303px;
 }
 
 .comment-form-line {
@@ -24,15 +22,9 @@
 .comment-form-line textarea {
     border: none;
     font-size: 14px;
-    /* height: 90%; */
-    /* width: 100%; */
-    /* height: 57px; */
-    // width: 492px;
     height: 90%;
     margin-right: 10px;
-    /* padding: 10px 0; */
     padding-top: 15px;
-    /* padding: 15px 0; */
     box-sizing: border-box;
     width: 100%;
 }
@@ -63,16 +55,16 @@
 .comment-close {
   position: absolute;
   right: 22px;
-//   top: 12px;
   width: 32px;
   height: 18px;
   opacity: .3;
   margin-top: 2px;
-  /* transition: color .3s ease-in-out; */
 }
+
 .comment-close:hover {
   opacity: 1;
 }
+
 .comment-close:before, .comment-close:after {
   position: absolute;
   content: ' ';
@@ -81,35 +73,37 @@
   background-color: #3897f0;;
   right: 0;
 }
+
 .comment-close:before {
   transform: rotate(45deg);
 }
+
 .comment-close:after {
   transform: rotate(-45deg);
 }
 
 .comment-item-line {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 5px;
-    position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 5px;
+  position: relative;
 }
 
 .comment-item-line a {
-    text-decoration: none;
-    color: black;
-    margin-right: 4px;
+  text-decoration: none;
+  color: black;
+  margin-right: 4px;
 }
 
 .view-all-comments {
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-top: 5px;
-    color: #999;
-    cursor: pointer;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 5px;
+  color: #999;
+  cursor: pointer;
 }
 
 .show-comment-index-item img {
@@ -121,7 +115,6 @@
 .post-show-comment {
   display: flex;
   flex-direction: column;
-  // align-items: center;
 }
 
 .show-comment-index-item {

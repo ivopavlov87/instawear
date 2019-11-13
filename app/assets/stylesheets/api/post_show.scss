@@ -38,7 +38,6 @@
     justify-content: center;
     border-radius: 4px 0 0 4px;
     border: 1px solid #ebebeb;
-    // background-color: white;
     align-items: center;
     background-color: white;
     object-fit: cover;
@@ -94,13 +93,10 @@
 }
 
 .post-body {
-    // padding: 16px;
-    /* padding: 16px 12px; */
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    // margin-bottom: 150px;
     justify-content: flex-start;
     height: 100%;
 }
@@ -108,7 +104,6 @@
 .post-show-caption {
     display: flex;
     justify-content: flex-start;
-    // align-items: center;
     padding: 12px 16px;
     position: relative;
 }
@@ -116,7 +111,6 @@
 .post-show-caption div:first-child {
     display: flex;
     flex-direction: row;
-    // justify-content: center;
     align-items: flex-start;
     margin-left: 15px;
 }
@@ -151,7 +145,6 @@
     color: #999;
     line-height: 18px;
     font-size: 10px;
-    // margin-top: 10px;
     margin-bottom: 4px;
     text-transform: uppercase;
 }
@@ -176,7 +169,6 @@
     background: #fafafa;
     z-index: 3;
     padding-top: 12px;
-    // margin-top: 5px;
 }
 
 .about-links a {
@@ -192,48 +184,9 @@
     font-size: 12px;
 }
 
-// .edit-post-form-details {
-
-// }
-
-// .edit-post-content {
-//     padding: 20px 16px 20px;
-//     display: flex;
-//     height: 150px;
-//     justify-content: center;
-// }
-
-// .edit-upload-frame {
-//     position: fixed;
-//     top: 30%;
-//     left: 50%;
-//     margin-left: -240px;
-//     background-color: rgb(255, 255, 255);
-//     border-radius: 3px;
-//     z-index: 10;
-//     width: 350px;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-// }
-
-// .edit-post-header {
-//     text-align: left;
-//     border-radius: 5px 5px 0 0;
-//     padding: 10px;
-//     width: 480px;
-//     border-bottom: 1px solid #F0F0F0;
-//     box-sizing: border-box;
-// }
-
 .edit-post-caption textarea {
     height: 40px;
 }
-
-// .post-show-main {
-//     height: 100vh;
-// }
 
 .dot-separator {
     width: 20px;

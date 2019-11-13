@@ -15,15 +15,10 @@ class ProfileEditForm extends React.Component {
             username: user.username,
             website: user.website || "",
             bio: user.bio || "",
-            // email: user.email,
-            // phoneNumber: user.phone_number || "",
-            // gender: user.gender || "",
         };
 
         this.renderErrors = this.renderErrors.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        // this.handleGender = this.handleGender.bind(this);
-        this.handleDeleteAvatar = this.handleDeleteAvatar.bind(this);
         this.goToPreviousURL = this.goToPreviousURL.bind(this);
     }
 
@@ -54,46 +49,12 @@ class ProfileEditForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.updateUser(this.state).then(() => {
-            // this.props.closeForm(false);
             this.goToPreviousURL();
-        });
-    }
-
-    // handleGender() {
-
-    // }
-
-    handleDeleteAvatar(e) {
-        debugger
-        e.preventDefault();
-
-        let loading = document.createElement('img');
-        loading.src = "/images/avatar-loading.gif";
-        loading.id = "delete-avatar-loading-id";
-        let ava = document.getElementById("delete-user-photo-id");
-        ava.appendChild(loading);
-
-        const formData = new FormData();
-        // let file = open("s3://active-storage-insta-dev/zwywstDHuQC597maH9YwGnLo");
-        let file = open("https://active-storage-insta-dev.s3-us-west-1.amazonaws.com/profile-default.jpg");
-        // this.props.user.profile_photo.attach(io: file, filename: "zwywstDHuQC597maH9YwGnLo");
-
-        formData.append('user[profile_photo]', file);
-
-        debugger
-        this.props.updateUserPhoto({
-            formData,
-            id: this.props.user.id
-        }).then(() => {
-            let loadingBtn = document.getElementById("delete-avatar-loading-id");
-            let avatarBtn = document.getElementById("delete-user-photo-id");
-            avatarBtn.removeChild(loadingBtn);
         });
     }
 
     goToPreviousURL() {
         this.props.history.goBack();
-        // this.props.history.push(this.props.url);
     }
 
     render() {
@@ -108,7 +69,6 @@ class ProfileEditForm extends React.Component {
                             </div>
                             <div className="profile-edit-user">
                                 <p className="profile-edit-username">{this.props.currentUser.username}</p>
-                                {/* <p className="delete-avatar" onClick={this.handleDeleteAvatar}>Delete Profile Photo</p> */}
                             </div>
                         </header>
 
@@ -159,45 +119,11 @@ class ProfileEditForm extends React.Component {
                                         onChange={this.update("bio")}
                                     />
                                 </div>
-                            </div>
-                            
-                            {/* <div className="profile-edit-field">
-                                <p>Private Information</p>
-                            </div> */}
-                            {/* <div>
-                                <label>
-                                Email
-                                <input className=""
-                                        type="text"
-                                        value={this.state.email}
-                                        onChange={this.update("email")}
-                                    />
-                                </label>
-                            </div> */}
-                            {/* <div className="profile-edit-field">
-                                <aside>
-                                    <label>Phone Number</label>
-                                </aside>
-                                <div>
-                                    <input className=""
-                                        type="text"
-                                        value={this.state.phoneNumber}
-                                        onChange={this.update("phoneNumber")}
-                                    />
-                                </div>
-                            </div> */}
-                            {/* <div className="profile-edit-field">
-                                <aside>
-                                    <label>Gender</label>
-                                </aside>
-                                <div onClick={this.handleGender}>{this.state.gender}</div>
-                            </div> */}
-                            
+                            </div>                           
                             {this.renderErrors()}
                         </div>
                         <div className="post-btns">
                             <button 
-                                // onClick={() => this.props.closeForm(false)} 
                                 onClick={this.goToPreviousURL}
                                 className="post-cancel-btn">Cancel
                             </button>

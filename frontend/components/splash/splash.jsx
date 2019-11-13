@@ -7,18 +7,13 @@ const fadeProperties = {
     transitionDuration: 500,
     infinite: true,
     indicators: true,
-    // onChange: (oldIndex, newIndex) => {
-    //     console.log(`fade transition from ${oldIndex} to ${newIndex}`);
-    // }
 }
 
 const Splash = () => {
     return (
         <div className="splash-page">
             <div className="splash-animation">
-                {/* <div className="fade-div-wrapper" style={{ backgroundImage: '/images/splash-phone.png' }}> */}
                 <div className="fade-background">
-                    {/* <img src="/images/splash-phone.png" alt="" className="phone-background"/> */}
                     <div className="fade-div-wrapper">
                         <Fade {...fadeProperties}>
                             <div className="each-fade">
@@ -42,9 +37,6 @@ const Splash = () => {
                                 </div>
                             </div>
                         </Fade>
-                        {/* {document.getElementsByClassName("indicators").style={display: 'none'}} */}
-                        {/* {ReactDOM.findDOMNode(<Splash>).getElementsByClassName('indicators')} */}
-                        {/* {React.Children.toArray(this.props.children).filter((item) => item.props.className === 'indicators').length} */}
                     </div>
                 </div>         
                 <SignupFormContainer />

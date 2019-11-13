@@ -13,7 +13,6 @@ class CommentIndex extends React.Component {
         if (this.props.match.path === "/feed" && this.props.comments.length >= 1) {
             let lastCommentDate =
                 this.props.comments[this.props.comments.length - 1].created_at;
-            // let date = formatCreatedAt(lastCommentDate);
             let date = reformatCreatedAt(lastCommentDate).toUpperCase();
             return (
                 <p className="created-date-detailed">{date}</p>
@@ -37,7 +36,6 @@ class CommentIndex extends React.Component {
             slicedComments = comments;
         }
 
-        // debugger
         return (
             <div className="comments-container">
                 {viewAllComments}
